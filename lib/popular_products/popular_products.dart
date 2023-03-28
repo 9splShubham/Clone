@@ -7,14 +7,14 @@ import 'package:clone/dashboard/category.dart';
 import 'package:clone/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 
-class RecommendProducts extends StatefulWidget {
-  const RecommendProducts({Key? key}) : super(key: key);
+class PopularProducts extends StatefulWidget {
+  const PopularProducts({Key? key}) : super(key: key);
 
   @override
-  State<RecommendProducts> createState() => _RecommendProductsState();
+  State<PopularProducts> createState() => PopularProductsState();
 }
 
-class _RecommendProductsState extends State<RecommendProducts> {
+class PopularProductsState extends State<PopularProducts> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -41,11 +41,11 @@ class _RecommendProductsState extends State<RecommendProducts> {
                 },
               ),
               Text(
-                AppString.textRecommendProduct,
+                AppString.textPopularProducts,
                 style: getTextStyle(AppFonts.regular, AppSize.textSize18),
               ),
               SizedBox(
-                width: 30,
+                width: 70,
               ),
               IconButton(
                 icon: Image.asset(
@@ -80,7 +80,7 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
-    
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -89,10 +89,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             SizedBox(
               height: 20,
             ),
-            
-            
+
+
             Container(
-              height: 850,
+              height: 750,
 
               child: GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
@@ -111,7 +111,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                               Container(
                                 height: 100,
                                 child: Image.asset(
-                                  Products()[index].image!,
+                                  items2()[index].image!,
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -123,7 +123,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                 child: Wrap(
                                   children: [
                                     Text(
-                                      Products()[index].name!,
+                                      items2()[index].name!,
                                       style: getTextStyle(AppFonts.regularBlack2,
                                           AppSize.textSize14),
                                     ),
@@ -133,7 +133,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                     Row(
                                       children: [
                                         Text(
-                                          Products()[index].price!,
+                                          items2()[index].price!,
                                           style: getTextStyle(
                                               AppFonts.regularGreen,
                                               AppSize.textSize14),

@@ -6,7 +6,9 @@ import 'package:clone/core/app_size.dart';
 import 'package:clone/core/app_string.dart';
 import 'package:clone/dashboard/category.dart';
 import 'package:clone/notifications/notifications.dart';
+import 'package:clone/popular_products/popular_products.dart';
 import 'package:clone/recommend_product/recommend_product.dart';
+import 'package:clone/search/search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -255,24 +257,37 @@ class _DashboardState extends State<Dashboard> {
                     height: 60,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: TextField(
-                        textAlign: TextAlign.left,
-                        decoration: InputDecoration(
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Image.asset(
-                                AppImage.search,
-                                width: 20,
-                                height: 20,
+
+                        child: TextField(
+                          textAlign: TextAlign.left,
+                          decoration: InputDecoration(
+                              prefixIcon: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: InkWell(
+                                  child: Image.asset(
+                                    AppImage.search,
+                                    width: 20,
+                                    height: 20,
+                                  ),
+                                  onTap: (){
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const Search()),
+                                    );
+
+                                  },
+                                ),
                               ),
-                            ),
-                            border: InputBorder.none,
-                            filled: true,
-                            fillColor: AppColor.colortextbox,
-                            hintText: AppString.textSearch,
-                            hintStyle: getTextStyle(
-                                AppFonts.regularGrey, AppSize.textSize14)),
-                      ),
+                              border: InputBorder.none,
+                              filled: true,
+                              fillColor: AppColor.colortextbox,
+                              hintText: AppString.textSearch,
+                              hintStyle: getTextStyle(
+                                  AppFonts.regularGrey, AppSize.textSize14)),
+                        ),
+
+
                     ),
                   ),
                   SizedBox(
@@ -354,10 +369,19 @@ class _DashboardState extends State<Dashboard> {
                         ),
                         Align(
                           alignment: Alignment.topLeft,
-                          child: Text(
-                            AppString.textPopularProducts,
-                            style: getTextStyle(
-                                AppFonts.mediumBoldBlack, AppSize.textSize18),
+                          child: InkWell(
+                            child: Text(
+                              AppString.textPopularProducts,
+                              style: getTextStyle(
+                                  AppFonts.mediumBoldBlack, AppSize.textSize18),
+                            ),
+                            onTap: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const PopularProducts()),
+                              );
+                            },
                           ),
                         ),
                         Container(
@@ -476,31 +500,38 @@ class _DashboardState extends State<Dashboard> {
                                       child: Column(
                                         children: [
                                           Container(
-                                            height: 115,
+                                            height: 90,
                                             width: 150,
                                             child:
                                                 Image.asset(AppImage.medicine),
                                           ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
                                           Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 5),
-                                            child: Container(
-                                              child:
-                                                  Text.rich(TextSpan(children: [
-                                                TextSpan(
-                                                  text: AppString
-                                                      .textTrueBasicsMultivitSport,
+                                            padding: const EdgeInsets.all(3),
+                                            child: Wrap(
+                                              children: [
+                                                Text(
+                                                  items()[index].name!,
                                                   style: getTextStyle(
-                                                      AppFonts.regularBlack,
+                                                      AppFonts.regularBlack2,
                                                       AppSize.textSize14),
                                                 ),
-                                                TextSpan(
-                                                  text: AppString.textRS,
-                                                  style: getTextStyle(
-                                                      AppFonts.regularGreen,
-                                                      AppSize.textSize14),
-                                                )
-                                              ])),
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      items()[index].price!,
+                                                      style: getTextStyle(
+                                                          AppFonts.regularGreen,
+                                                          AppSize.textSize14),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ],

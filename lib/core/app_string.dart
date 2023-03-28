@@ -57,7 +57,7 @@ class AppString {
 
   static const textViewmore = "View more";
   static const textRecommendProduct = "Recommend Product";
-  static const textTrueBasicsMultivitSport = "True Basics Multivit Sport\n";
+  static const textTrueBasicsMultivitSport = "True Basics Multivit Sport";
   static const textLatestNewsBlog = "Latest News & Blog";
   static const textOurInstagramFeed = "Our Instagram Feed";
   static const textFOLLOWUSON = "FOLLOW US ON";
@@ -114,4 +114,5 @@ class AppString {
   static const textRS6 = "17.96";
   static const textRS7 = "22.89";
   static const textRS8 = "16.00";
+  static const textMultivit = "Multivit";
 }
