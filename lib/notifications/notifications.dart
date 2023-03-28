@@ -3,6 +3,7 @@ import 'package:clone/core/app_fonts.dart';
 import 'package:clone/core/app_image.dart';
 import 'package:clone/core/app_size.dart';
 import 'package:clone/core/app_string.dart';
+import 'package:clone/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 
 class Notifications extends StatefulWidget {
@@ -14,6 +15,26 @@ class Notifications extends StatefulWidget {
 
 class _NotificationsState extends State<Notifications> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final List<String> notifications = [
+    AppString.textn1,
+    AppString.textn2,
+    AppString.textn3,
+    AppString.textn4,
+    AppString.textn5,
+    AppString.textn6,
+    AppString.textn7,
+  ];
+
+  final List<String> time = [
+    AppString.textd1,
+    AppString.textd2,
+    AppString.textd3,
+    AppString.textd4,
+    AppString.textd5,
+    AppString.textd6,
+    AppString.textd7,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +55,16 @@ class _NotificationsState extends State<Notifications> {
                   width: 40,
                 ),
                 title: Text(
-                  "Home",
+                  AppString.textHome,
                   style:
                       getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Dashboard()),
+                  );
+                },
               ),
               ListTile(
                 leading: Image.asset(
@@ -47,7 +73,7 @@ class _NotificationsState extends State<Notifications> {
                   width: 40,
                 ),
                 title: Text(
-                  "All Category",
+                  AppString.textAllCategory,
                   style:
                       getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                 ),
@@ -60,7 +86,7 @@ class _NotificationsState extends State<Notifications> {
                   width: 40,
                 ),
                 title: Text(
-                  "My Order",
+                  AppString.textMyOrder,
                   style:
                       getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                 ),
@@ -73,7 +99,7 @@ class _NotificationsState extends State<Notifications> {
                   width: 40,
                 ),
                 title: Text(
-                  "My Wishlist",
+                  AppString.textMyWishlist,
                   style:
                       getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                 ),
@@ -86,7 +112,7 @@ class _NotificationsState extends State<Notifications> {
                   width: 40,
                 ),
                 title: Text(
-                  "My Profile",
+                  AppString.textMyProfile,
                   style:
                       getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                 ),
@@ -99,7 +125,7 @@ class _NotificationsState extends State<Notifications> {
                   width: 40,
                 ),
                 title: Text(
-                  "Notification",
+                  AppString.textnotification,
                   style:
                       getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                 ),
@@ -112,7 +138,7 @@ class _NotificationsState extends State<Notifications> {
                   width: 40,
                 ),
                 title: Text(
-                  "Rewards & Coupons",
+                  AppString.textRewardCoupons,
                   style:
                       getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                 ),
@@ -125,7 +151,7 @@ class _NotificationsState extends State<Notifications> {
                   width: 40,
                 ),
                 title: Text(
-                  "News & Blog",
+                  AppString.textNewsBlog,
                   style:
                       getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                 ),
@@ -138,7 +164,7 @@ class _NotificationsState extends State<Notifications> {
                   width: 40,
                 ),
                 title: Text(
-                  "Settings",
+                  AppString.textSettings,
                   style:
                       getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                 ),
@@ -186,18 +212,49 @@ class _NotificationsState extends State<Notifications> {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              Card(
-                child: Container(
-                  height: 240,
-                  width: 160,
-                  color: Colors.red,
-                ),
-              )
-            ],
-          ),
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: ListView.builder(
+              itemCount: notifications.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: Container(
+                    height: 70,
+                    width: double.infinity,
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10, top: 10),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text(notifications[index],
+                                    style: index == 0 || index == 1
+                                        ? getTextStyle(AppFonts.regularBlack2,
+                                            AppSize.textSize14)
+                                        : getTextStyle(AppFonts.regularGrey,
+                                            AppSize.textSize14)),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  time[index],
+                                  style: getTextStyle(
+                                      AppFonts.regularGrey, AppSize.textSize14),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              }),
         ),
       ),
     );

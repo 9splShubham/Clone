@@ -41,4 +41,23 @@ class AppImage {
   static const String drewards = '${filePath}reward.png';
   static const String dblog = '${filePath}blog.png';
   static const String dsettings = '${filePath}settings.png';
+
+  // Category
+  static const String c1 = '${filePath}category1.png';
+  static const String c2 = '${filePath}category2.png';
+  static const String c3 = '${filePath}category3.png';
+  static const String c4 = '${filePath}category4.png';
+
+  // RECOMMEND PRODUCT
+  static const String Hamper = '${filePath}hamper.png';
+  static const String Shampoo = '${filePath}shampoo.png';
+  static const String Serum = '${filePath}serum.png';
+
+  static const String tab = '${filePath}3.png';
+  static const String back2 = '${filePath}back2.png';
+
+  //ONPUSH
+  static const String ponds = '${filePath}ponds.png';
+  static const String formula = '${filePath}formula.png';
+  static const String pampers = '${filePath}pampers.png';
 }

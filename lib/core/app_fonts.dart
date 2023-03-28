@@ -38,6 +38,13 @@ class AppFonts {
   static final mediumBoldBlack =
       mediumBold.copyWith(color: AppColor.colorBlack);
 
+  ///colorBlack2
+  static final regularBlack2 = regular.copyWith(color: AppColor.colorBlack);
+  static final boldBlack2 = bold.copyWith(color: AppColor.colorBlack);
+  static final semiBoldBlack2 = semiBold.copyWith(color: AppColor.colorBlack);
+  static final mediumBoldBlack2 =
+      mediumBold.copyWith(color: AppColor.colorBlack);
+
   ///colorGrey
   static final regularGrey = regular.copyWith(color: AppColor.colorgrey);
   static final boldGrey = bold.copyWith(color: AppColor.colorgrey);

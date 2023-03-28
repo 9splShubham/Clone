@@ -4,7 +4,10 @@ import 'package:clone/core/app_fonts.dart';
 import 'package:clone/core/app_image.dart';
 import 'package:clone/core/app_size.dart';
 import 'package:clone/core/app_string.dart';
+import 'package:clone/dashboard/category.dart';
 import 'package:clone/notifications/notifications.dart';
+import 'package:clone/recommend_product/recommend_product.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -30,10 +33,10 @@ final List<String> Titles = [
 ];
 
 final List<String> imageTitles = [
-  "Wine/Liqour",
-  "Vitamins",
-  "Health",
-  "Skin Care",
+  AppString.textWineLiqour,
+  AppString.textVitamins,
+  AppString.textHealth,
+  AppString.textSkinCare,
 ];
 
 class _DashboardState extends State<Dashboard> {
@@ -58,7 +61,7 @@ class _DashboardState extends State<Dashboard> {
                     width: 40,
                   ),
                   title: Text(
-                    "Home",
+                    AppString.textHome,
                     style:
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                   ),
@@ -71,7 +74,7 @@ class _DashboardState extends State<Dashboard> {
                     width: 40,
                   ),
                   title: Text(
-                    "All Category",
+                    AppString.textAllCategory,
                     style:
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                   ),
@@ -84,7 +87,7 @@ class _DashboardState extends State<Dashboard> {
                     width: 40,
                   ),
                   title: Text(
-                    "My Order",
+                    AppString.textMyOrder,
                     style:
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                   ),
@@ -97,7 +100,7 @@ class _DashboardState extends State<Dashboard> {
                     width: 40,
                   ),
                   title: Text(
-                    "My Wishlist",
+                    AppString.textMyWishlist,
                     style:
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                   ),
@@ -110,7 +113,7 @@ class _DashboardState extends State<Dashboard> {
                     width: 40,
                   ),
                   title: Text(
-                    "My Profile",
+                    AppString.textMyProfile,
                     style:
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                   ),
@@ -123,7 +126,7 @@ class _DashboardState extends State<Dashboard> {
                     width: 40,
                   ),
                   title: Text(
-                    "Notification",
+                    AppString.textnotification,
                     style:
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                   ),
@@ -142,7 +145,7 @@ class _DashboardState extends State<Dashboard> {
                     width: 40,
                   ),
                   title: Text(
-                    "Rewards & Coupons",
+                    AppString.textRewardCoupons,
                     style:
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                   ),
@@ -155,7 +158,7 @@ class _DashboardState extends State<Dashboard> {
                     width: 40,
                   ),
                   title: Text(
-                    "News & Blog",
+                    AppString.textNewsBlog,
                     style:
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                   ),
@@ -168,7 +171,7 @@ class _DashboardState extends State<Dashboard> {
                     width: 40,
                   ),
                   title: Text(
-                    "Settings",
+                    AppString.textSettings,
                     style:
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                   ),
@@ -358,11 +361,12 @@ class _DashboardState extends State<Dashboard> {
                           ),
                         ),
                         Container(
-                          height: 340,
+                          height: 350,
                           child: GridView.builder(
+                              physics: NeverScrollableScrollPhysics(),
                               itemCount: 4,
                               gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                  SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 0,
                                 mainAxisSpacing: 0,
@@ -370,33 +374,50 @@ class _DashboardState extends State<Dashboard> {
                               itemBuilder: (context, index) {
                                 return Card(
                                   child: Container(
-                                      height: 240,
+                                      height: 300,
                                       width: 160,
                                       child: Column(
                                         children: [
-                                          Image.asset(AppImage.doritos),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 5),
-                                            child: Container(
-                                              child:
-                                                  Text.rich(TextSpan(children: [
-                                                TextSpan(
-                                                  text:
-                                                      AppString.textDoritostext,
-                                                  style: getTextStyle(
-                                                      AppFonts.regularBlack,
-                                                      AppSize.textSize14),
-                                                ),
-                                                TextSpan(
-                                                  text: AppString.textRS,
-                                                  style: getTextStyle(
-                                                      AppFonts.regularGreen,
-                                                      AppSize.textSize14),
-                                                )
-                                              ])),
+                                          Container(
+                                            height: 100,
+                                            child: Image.asset(
+                                              items()[index].image!,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(3),
+                                            child: Wrap(
+                                              children: [
+                                                Text(
+                                                  items()[index].name!,
+                                                  style: getTextStyle(
+                                                      AppFonts.regularBlack2,
+                                                      AppSize.textSize14),
+                                                ),
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      items()[index].price!,
+                                                      style: getTextStyle(
+                                                          AppFonts.regularGreen,
+                                                          AppSize.textSize14),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          // Align(
+                                          //   alignment: Alignment.topLeft,
+                                          //   child:
+                                          // ),
                                         ],
                                       )),
                                 );
@@ -417,19 +438,30 @@ class _DashboardState extends State<Dashboard> {
                         ),
                         Align(
                           alignment: Alignment.topLeft,
-                          child: Text(
-                            AppString.textRecommendProduct,
-                            style: getTextStyle(
-                                AppFonts.mediumBoldBlack, AppSize.textSize18),
+                          child: InkWell(
+                            child: Text(
+                              AppString.textRecommendProduct,
+                              style: getTextStyle(
+                                  AppFonts.mediumBoldBlack, AppSize.textSize18),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const RecommendProducts()),
+                              );
+                            },
                           ),
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Container(
-                          height: 300,
+                          height: 360,
                           child: GridView.builder(
                               itemCount: 4,
+                              physics: NeverScrollableScrollPhysics(),
                               gridDelegate:
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
