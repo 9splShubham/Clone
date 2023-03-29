@@ -60,4 +60,10 @@ class AppImage {
   static const String ponds = '${filePath}ponds.png';
   static const String formula = '${filePath}formula.png';
   static const String pampers = '${filePath}pampers.png';
+  static const String rewardlogo = '${filePath}rewards_logo.png';
+  static const String decoration = '${filePath}decoration.png';
+  static const String delete = '${filePath}delete.png';
+  static const String minus = '${filePath}minus.png';
+  static const String plus = '${filePath}plus.png';
+  static const String hh = '${filePath}hh.png';
 }

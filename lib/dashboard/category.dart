@@ -55,8 +55,6 @@ List<Category> items() {
   return mList;
 }
 
-
-
 List<Category> items2() {
   List<Category> mList = [];
 
@@ -221,6 +219,38 @@ List<Category> Products() {
 
   return mList;
 }
+
+List<Category> RecommendProduct() {
+  List<Category> mList = [];
+
+  Category mCategory = Category();
+
+  mCategory.image = AppImage.medicine;
+  mCategory.name = AppString.textTrueBasicsMultivitSport;
+  mCategory.price = AppString.textRS5;
+  mList.add(mCategory);
+
+  mCategory = Category();
+  mCategory.image = AppImage.ponds;
+  mCategory.name = AppString.textdPondVitaminMicellar;
+  mCategory.price = AppString.textRS6;
+  mList.add(mCategory);
+
+  mCategory = Category();
+  mCategory.image = AppImage.formula;
+  mCategory.name = AppString.textFormulaMaskCollection;
+  mCategory.price = AppString.textRS7;
+  mList.add(mCategory);
+
+  mCategory = Category();
+  mCategory.image = AppImage.pampers;
+  mCategory.name = AppString.textBabyDiapersNewborn;
+  mCategory.price = AppString.textRS8;
+  mList.add(mCategory);
+
+  return mList;
+}
+
 List<Category> Products2() {
   List<Category> mList = [];
 
@@ -245,15 +275,6 @@ List<Category> Products2() {
   mCategory.price = AppString.textRS5;
   mList.add(mCategory);
 
-
-  mCategory = Category();
-
-  mCategory.image = AppImage.medicine;
-  mCategory.name = AppString.textTrueBasicsMultivitSport;
-  mCategory.price = AppString.textRS5;
-  mList.add(mCategory);
-
-
   mCategory = Category();
 
   mCategory.image = AppImage.medicine;
@@ -282,7 +303,12 @@ List<Category> Products2() {
   mCategory.price = AppString.textRS5;
   mList.add(mCategory);
 
+  mCategory = Category();
 
+  mCategory.image = AppImage.medicine;
+  mCategory.name = AppString.textTrueBasicsMultivitSport;
+  mCategory.price = AppString.textRS5;
+  mList.add(mCategory);
 
   return mList;
 }

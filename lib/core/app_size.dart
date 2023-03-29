@@ -23,10 +23,12 @@ class AppSize {
   static const double textSize22 = 22;
   static const double textSize23 = 23;
   static const double textSize24 = 24;
-
-
-
-
+  static const double textSize25 = 25;
+  static const double textSize26 = 26;
+  static const double textSize27 = 27;
+  static const double textSize28 = 28;
+  static const double textSize29 = 29;
+  static const double textSize30 = 30;
 
   static const double mainSize1 = 1;
   static const double mainSize2 = 2;

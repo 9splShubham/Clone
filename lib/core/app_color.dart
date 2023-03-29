@@ -9,4 +9,5 @@ class AppColor {
   static const colorblack2 = Color(0xFF333333);
   static const colortextbox = Color(0xFFf2f2f2);
   static const colorgrey2 = Color(0XFFb2b2b2);
+  static const colorred = Color(0XFFff4848);
 }

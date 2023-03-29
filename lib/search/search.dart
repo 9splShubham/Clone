@@ -41,11 +41,11 @@ class search extends State<Search> {
                 },
               ),
               Text(
-                AppString.textPopularProducts,
+                AppString.textsearch,
                 style: getTextStyle(AppFonts.regular, AppSize.textSize18),
               ),
               SizedBox(
-                width: 30,
+                width: 140,
               ),
               IconButton(
                 icon: Image.asset(
@@ -53,6 +53,9 @@ class search extends State<Search> {
                   fit: BoxFit.fill,
                 ),
                 onPressed: () {},
+              ),
+              SizedBox(
+                width: 10,
               ),
               IconButton(
                 icon: Image.asset(
@@ -88,7 +91,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             height: 60,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-
               child: InkWell(
                 child: TextField(
                   textAlign: TextAlign.left,
@@ -108,17 +110,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       hintStyle: getTextStyle(
                           AppFonts.regularGrey, AppSize.textSize14)),
                 ),
-                onTap: (){},
+                onTap: () {},
               ),
-
             ),
           ),
           SizedBox(
             height: 20,
           ),
-
           Container(
-            height: 1000,
+            height: 800,
             child: GridView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: 8,
@@ -134,7 +134,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         child: Column(
                           children: [
                             Container(
-                              height: 160,
+                              height: 130,
                               child: Image.asset(
                                 Products2()[index].image!,
                                 fit: BoxFit.cover,
@@ -179,9 +179,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
         ],
       ),
-
-
     );
   }
 }
-

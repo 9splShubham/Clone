@@ -80,7 +80,6 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
-    
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -89,11 +88,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             SizedBox(
               height: 20,
             ),
-            
-            
             Container(
-              height: 850,
-
+              height: 750,
               child: GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: 8,
@@ -124,7 +120,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                   children: [
                                     Text(
                                       Products()[index].name!,
-                                      style: getTextStyle(AppFonts.regularBlack2,
+                                      style: getTextStyle(
+                                          AppFonts.regularBlack2,
                                           AppSize.textSize14),
                                     ),
                                     SizedBox(

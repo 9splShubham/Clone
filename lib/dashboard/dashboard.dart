@@ -1,4 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:clone/Add_to_cart/AddToCart.dart';
+import 'package:clone/Product_details/product_details.dart';
 import 'package:clone/core/app_color.dart';
 import 'package:clone/core/app_fonts.dart';
 import 'package:clone/core/app_image.dart';
@@ -8,6 +10,7 @@ import 'package:clone/dashboard/category.dart';
 import 'package:clone/notifications/notifications.dart';
 import 'package:clone/popular_products/popular_products.dart';
 import 'package:clone/recommend_product/recommend_product.dart';
+import 'package:clone/rewards_coupons/rewards_coupons.dart';
 import 'package:clone/search/search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -151,7 +154,13 @@ class _DashboardState extends State<Dashboard> {
                     style:
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const RewardsCoupons()),
+                    );
+                  },
                 ),
                 ListTile(
                   leading: Image.asset(
@@ -243,7 +252,13 @@ class _DashboardState extends State<Dashboard> {
                     AppImage.shop,
                     fit: BoxFit.fill,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AddToCart()),
+                    );
+                  },
                 ),
               ],
             ),
@@ -257,37 +272,33 @@ class _DashboardState extends State<Dashboard> {
                     height: 60,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-
-                        child: TextField(
-                          textAlign: TextAlign.left,
-                          decoration: InputDecoration(
-                              prefixIcon: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: InkWell(
-                                  child: Image.asset(
-                                    AppImage.search,
-                                    width: 20,
-                                    height: 20,
-                                  ),
-                                  onTap: (){
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => const Search()),
-                                    );
-
-                                  },
+                      child: TextField(
+                        textAlign: TextAlign.left,
+                        decoration: InputDecoration(
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: InkWell(
+                                child: Image.asset(
+                                  AppImage.search,
+                                  width: 20,
+                                  height: 20,
                                 ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const Search()),
+                                  );
+                                },
                               ),
-                              border: InputBorder.none,
-                              filled: true,
-                              fillColor: AppColor.colortextbox,
-                              hintText: AppString.textSearch,
-                              hintStyle: getTextStyle(
-                                  AppFonts.regularGrey, AppSize.textSize14)),
-                        ),
-
-
+                            ),
+                            border: InputBorder.none,
+                            filled: true,
+                            fillColor: AppColor.colortextbox,
+                            hintText: AppString.textSearch,
+                            hintStyle: getTextStyle(
+                                AppFonts.regularGrey, AppSize.textSize14)),
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -375,11 +386,12 @@ class _DashboardState extends State<Dashboard> {
                               style: getTextStyle(
                                   AppFonts.mediumBoldBlack, AppSize.textSize18),
                             ),
-                            onTap: (){
+                            onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const PopularProducts()),
+                                    builder: (context) =>
+                                        const PopularProducts()),
                               );
                             },
                           ),
@@ -404,9 +416,19 @@ class _DashboardState extends State<Dashboard> {
                                         children: [
                                           Container(
                                             height: 100,
-                                            child: Image.asset(
-                                              items()[index].image!,
-                                              fit: BoxFit.cover,
+                                            child: InkWell(
+                                              child: Image.asset(
+                                                items()[index].image!,
+                                                fit: BoxFit.cover,
+                                              ),
+                                              onTap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const ProductDetails()),
+                                                );
+                                              },
                                             ),
                                           ),
                                           SizedBox(
@@ -487,7 +509,7 @@ class _DashboardState extends State<Dashboard> {
                               itemCount: 4,
                               physics: NeverScrollableScrollPhysics(),
                               gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                  SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 10,
                                 mainAxisSpacing: 10,
@@ -502,8 +524,9 @@ class _DashboardState extends State<Dashboard> {
                                           Container(
                                             height: 90,
                                             width: 150,
-                                            child:
-                                                Image.asset(AppImage.medicine),
+                                            child: Image.asset(
+                                                RecommendProduct()[index]
+                                                    .image!),
                                           ),
                                           SizedBox(
                                             height: 10,
@@ -513,18 +536,20 @@ class _DashboardState extends State<Dashboard> {
                                             child: Wrap(
                                               children: [
                                                 Text(
-                                                  items()[index].name!,
+                                                  RecommendProduct()[index]
+                                                      .name!,
                                                   style: getTextStyle(
                                                       AppFonts.regularBlack2,
                                                       AppSize.textSize14),
                                                 ),
                                                 SizedBox(
-                                                  height: 10,
+                                                  height: 30,
                                                 ),
                                                 Row(
                                                   children: [
                                                     Text(
-                                                      items()[index].price!,
+                                                      RecommendProduct()[index]
+                                                          .price!,
                                                       style: getTextStyle(
                                                           AppFonts.regularGreen,
                                                           AppSize.textSize14),

@@ -115,4 +115,23 @@ class AppString {
   static const textRS7 = "22.89";
   static const textRS8 = "16.00";
   static const textMultivit = "Multivit";
+  static const textsearch = "Search";
+  static const textRewardPoints = "Reward Points";
+  static const textViewHistory = "View History";
+  static const text1000 = "1000";
+  static const textCurrentRewardPoints = "Current Reward Points";
+  static const text100Points1Dollar = "100 Points = 1 Dollar";
+  static const textCoupons = "Coupons";
+
+  // REWARDS AND COUPONS
+  static const textperct1 = "5%";
+  static const texttitle1 = "Off entire on order";
+  static const textMyCart = "My Cart";
+  static const textdesc1 =
+      "Lorem Ipsum is simply dummy text of the and typesetting industry.";
+  static const textSubTotal = "Subtotal (8 items):";
+  static const text60 = "60.25";
+  static const textShareMyCart = "Share My Cart";
+  static const textOrderNow = "Order Now";
+  static const textProductDetail = "Product Detail";
 }
