@@ -81,13 +81,13 @@ class AppString {
 
 // Popular products
   static const textDoritostext = 'Doritos Tangy Cheese Corn Chips';
-  static const textRS = "2.25";
+  static const textRS = "\$2.25";
   static const textAveenoBaby = 'Aveeno Baby';
-  static const textRS2 = "17.96";
+  static const textRS2 = "\$17.96";
   static const textTheOrdinaryHyaluronicAcid = 'The Ordinary Hyaluronic Acid ';
-  static const textRS3 = "22.89";
+  static const textRS3 = "\$22.89";
   static const textHeadandShouldersShampoo = "Head and Shoulders Shampoo";
-  static const textRS4 = "16.00";
+  static const textRS4 = "\$16.00";
 
   // NOTIFICATIONS
   static const textn1 = "Earned Reward 10 Points";
@@ -110,10 +110,10 @@ class AppString {
   static const textFormulaMaskCollection = "Formula 10.0.6 Mask Collection";
   static const textBabyDiapersNewborn = "Baby Diapers Newborn";
 
-  static const textRS5 = "14.00";
-  static const textRS6 = "17.96";
-  static const textRS7 = "22.89";
-  static const textRS8 = "16.00";
+  static const textRS5 = "\$14.00";
+  static const textRS6 = "\$17.96";
+  static const textRS7 = "\$22.89";
+  static const textRS8 = "\$16.00";
   static const textMultivit = "Multivit";
   static const textsearch = "Search";
   static const textRewardPoints = "Reward Points";
@@ -130,8 +130,54 @@ class AppString {
   static const textdesc1 =
       "Lorem Ipsum is simply dummy text of the and typesetting industry.";
   static const textSubTotal = "Subtotal (8 items):";
-  static const text60 = "60.25";
+  static const text60 = "\$60.25";
   static const textShareMyCart = "Share My Cart";
   static const textOrderNow = "Order Now";
   static const textProductDetail = "Product Detail";
+  static const textAddtoWishlist = "Add to Wishlist";
+  static const textAddtoCart = "Add to Cart";
+  static const textSelectQty = "Select Qty.";
+  static const textChatwithSeller = "Chat with Seller";
+  static const textinfo =
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+
+  static const textp =
+      "Head and Shoulders Shampoo, Anti Dandruff Treatment and Scalp Care, Classic Clean,";
+
+// PLACE ORDER
+  static const textPlaceOrder = "Place Order";
+  static const textDeliveryAddress = "Delivery Address";
+  static const textChangeAddress = "Change Address";
+  static const textBillingADDRESS = "Billing Address";
+  static const text56N22ndStEastOrangeNJ07017USA =
+      "56 N 22nd St, East Orange, NJ 07017, USA";
+  static const textDeliveryType = "Delivery Type";
+  static const textSelectDeliveryType = "Select Delivery Type";
+  static const textYoursProducts = "Yours Products";
+  static const textViewDetail = "View Detail";
+  static const textAddTip = "Add Tip";
+  static const textYourOrder = "Your Order";
+  static const textProducts8items = "Products (8 items)";
+  static const textDeliveryFees = "Delivery Fees";
+  static const textServiceFees = "Service Fees";
+  static const textTip = "Tip";
+  static const textTotal = "Total";
+  static const textDiscount = "Discount";
+  static const textDiscountCodeDIS50 = "Discount Code - DIS50";
+  static const textRemoveCodeChangeCode = "Remove Code | Change Code";
+  static const textGrandTotal = "Grand Total";
+  static const textContinuetoPay = "Continue to Pay";
+  static const textAddCustom = "Add Custom";
+  static const textAddDiscountCoupon = "Add Discount Coupon";
+  static const text100ofthisvaluegoestodeliveryperson =
+      "100% of this value goes to delivery person";
+  static const text841MontgomeryStJerseyCityNJ07306SA =
+      "841 Montgomery St, Jersey City, NJ 07306, USA";
+
+  static const texto2 = "\$5.00";
+  static const texto3 = "\$5.75";
+  static const texto4 = "\$3.00";
+  static const texto5 = "\$74.00";
+  static const texto6 = "\$-13.00";
+  static const texto7 = "\$61.00";
 }

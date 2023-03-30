@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:clone/Add_to_cart/AddToCart.dart';
 import 'package:clone/Product_details/product_details.dart';
+import 'package:clone/all_category/all_category.dart';
 import 'package:clone/core/app_color.dart';
 import 'package:clone/core/app_fonts.dart';
 import 'package:clone/core/app_image.dart';
@@ -83,7 +84,13 @@ class _DashboardState extends State<Dashboard> {
                     style:
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AllCategory()),
+                    );
+                  },
                 ),
                 ListTile(
                   leading: Image.asset(

@@ -66,4 +66,15 @@ class AppImage {
   static const String minus = '${filePath}minus.png';
   static const String plus = '${filePath}plus.png';
   static const String hh = '${filePath}hh.png';
+  static const String p1 = '${filePath}p1.png';
+  static const String p2 = '${filePath}p2.png';
+  static const String p3 = '${filePath}p3.png';
+  static const String wa = '${filePath}whatsappwhite.png';
+  static const String share = '${filePath}share.png';
+  static const String p11 = '${filePath}p11.png';
+  static const String p12 = '${filePath}p12.png';
+  static const String p13 = '${filePath}p13.png';
+  static const String p14 = '${filePath}p14.png';
+  static const String dropdown = '${filePath}dropdown.png';
+  static const String plus_circle = '${filePath}plus_circle.png';
 }

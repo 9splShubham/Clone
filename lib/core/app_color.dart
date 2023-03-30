@@ -10,4 +10,5 @@ class AppColor {
   static const colortextbox = Color(0xFFf2f2f2);
   static const colorgrey2 = Color(0XFFb2b2b2);
   static const colorred = Color(0XFFff4848);
+  static const colorbrightgreen = Color(0xFF49ae26);
 }

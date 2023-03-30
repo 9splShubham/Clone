@@ -5,6 +5,7 @@ import 'package:clone/core/app_image.dart';
 import 'package:clone/core/app_size.dart';
 import 'package:clone/core/app_string.dart';
 import 'package:clone/dashboard/dashboard.dart';
+import 'package:clone/place_order/place_order.dart';
 import 'package:flutter/material.dart';
 
 class AddToCart extends StatefulWidget {
@@ -21,13 +22,9 @@ class _AddToCartState extends State<AddToCart> {
       appBar: AppBar(
         backgroundColor: AppColor.colorPrimary,
         elevation: 0,
-        title: Row(
-          children: [
-            Text(
-              AppString.textMyCart,
-              style: getTextStyle(AppFonts.regular, AppSize.textSize18),
-            ),
-          ],
+        title: Text(
+          AppString.textMyCart,
+          style: getTextStyle(AppFonts.regular, AppSize.textSize18),
         ),
       ),
       body: const MyStatefulWidget(),
@@ -106,6 +103,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                         decoration: BoxDecoration(
                                           border: Border.all(
                                               color: AppColor.colorgrey),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
                                         ),
                                         child: Row(
                                           mainAxisAlignment:
@@ -118,6 +117,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                                   height: 10,
                                                   width: 10,
                                                 )),
+                                            VerticalDivider(
+                                              color: AppColor.colorgrey,
+                                              thickness: 1,
+                                            ),
                                             Container(
                                               margin: EdgeInsets.symmetric(
                                                   horizontal: 3),
@@ -133,6 +136,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                                     AppFonts.regularBlack,
                                                     AppSize.textSize20),
                                               ),
+                                            ),
+                                            VerticalDivider(
+                                              color: AppColor.colorgrey,
+                                              thickness: 1,
                                             ),
                                             InkWell(
                                                 onTap: () {},
@@ -222,7 +229,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     style: ElevatedButton.styleFrom(
                       primary: AppColor.colorPrimary,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PlaceOrder()),
+                      );
+                    },
                   ),
                 ),
               ],
