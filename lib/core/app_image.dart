@@ -77,4 +77,5 @@ class AppImage {
   static const String p14 = '${filePath}p14.png';
   static const String dropdown = '${filePath}dropdown.png';
   static const String plus_circle = '${filePath}plus_circle.png';
+  static const String cancel = '${filePath}cancel.png';
 }

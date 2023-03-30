@@ -180,4 +180,18 @@ class AppString {
   static const texto5 = "\$74.00";
   static const texto6 = "\$-13.00";
   static const texto7 = "\$61.00";
+
+  // PAYMENT
+
+  static const textSelectPaymentOption = "Select Payment Option";
+  static const textPayusingVisaMasterCard = "Pay using Visa/ Master Card";
+  static const textCashondelivery = "Cash on delivery";
+  static const textACHpayment = "ACH payment";
+  static const textBankaccountsforTransfer = "Bank accounts for Transfer";
+  static const textBancoFicohsaCheckingAccountLempiras =
+      "Banco Ficohsa - Checking Account Lempiras";
+  static const text200012651887 = "# 200012651887";
+  static const text200012652002 = "# 200012652002";
+  static const textBancoFicohsaCheckingAccountDollar =
+      "Banco Ficohsa - Checking Account Dollar";
 }

@@ -398,10 +398,118 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   primary: AppColor.colorPrimary,
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const PlaceOrder()),
-                  );
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return SizedBox(
+                          height: 500,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      AppString.textSelectPaymentOption,
+                                      style: getTextStyle(
+                                          AppFonts.semiBoldBlack2,
+                                          AppSize.textSize20),
+                                    ),
+                                    InkWell(
+                                      child: Image.asset(
+                                        AppImage.cancel,
+                                        height: 20,
+                                        width: 20,
+                                      ),
+                                      onTap: () {
+                                        Navigator.pop(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const PlaceOrder()),
+                                        );
+                                      },
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 50,
+                                ),
+                                Card(
+                                  child: RadioListTile(
+                                    title: Text(
+                                        AppString.textPayusingVisaMasterCard),
+                                    value: "info",
+                                    groupValue: "info",
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  ),
+                                ),
+                                Card(
+                                  child: RadioListTile(
+                                    title: Text(AppString.textCashondelivery),
+                                    value: "info",
+                                    groupValue: "info",
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  ),
+                                ),
+                                Card(
+                                  child: RadioListTile(
+                                    title: Text(AppString.textACHpayment),
+                                    value: "info",
+                                    groupValue: "info",
+                                    onChanged: (value) {
+                                      setState(() {});
+                                    },
+                                  ),
+                                ),
+                                Text(
+                                  AppString.textBankaccountsforTransfer,
+                                  style: getTextStyle(AppFonts.semiBoldBlack2,
+                                      AppSize.textSize16),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  AppString
+                                      .textBancoFicohsaCheckingAccountLempiras,
+                                  style: getTextStyle(AppFonts.regularBlack2,
+                                      AppSize.textSize16),
+                                ),
+                                Text(
+                                  AppString.text200012651887,
+                                  style: getTextStyle(AppFonts.regularBlack2,
+                                      AppSize.textSize14),
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                Text(
+                                  AppString
+                                      .textBancoFicohsaCheckingAccountLempiras,
+                                  style: getTextStyle(AppFonts.regularBlack2,
+                                      AppSize.textSize16),
+                                ),
+                                Text(
+                                  AppString.text200012651887,
+                                  style: getTextStyle(AppFonts.regularBlack2,
+                                      AppSize.textSize14),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      });
                 },
               ),
             ),
