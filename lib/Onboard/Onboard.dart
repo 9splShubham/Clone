@@ -75,39 +75,47 @@ class _OnboardState extends State<Onboard> {
             height: 18,
           ),
           SizedBox(
-            height: 50,
-            width: 320,
-            child: ElevatedButton(
-              child: Text(
-                AppString.textContinuewithFacebook,
-                style: getTextStyle(AppFonts.regular, AppSize.textSize16),
-              ),
-              style: ElevatedButton.styleFrom(
-                primary: AppColor.colorBlue,
-              ),
-              onPressed: () {},
-            ),
-          ),
+              height: 50,
+              width: 320,
+              child: OutlinedButton.icon(
+                label: Text(
+                  AppString.textContinuewithFacebook,
+                  style: getTextStyle(AppFonts.regular, AppSize.textSize16),
+                ),
+                icon: Image.asset(
+                  AppImage.fb,
+                  height: 30,
+                  width: 30,
+                ),
+                onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(AppColor.colorBlue),
+                ),
+              )),
           const SizedBox(
             height: 20,
           ),
           SizedBox(
-            height: 50,
-            width: 320,
-            child: ElevatedButton(
-              child: Text(
-                AppString.textContinuewithGoogle,
-                style: getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: AppColor.colorWhite,
-                  side: const BorderSide(
-                    width: 2,
-                    color: AppColor.colorWhite,
-                  )),
-              onPressed: () {},
-            ),
-          ),
+              height: 50,
+              width: 320,
+              child: OutlinedButton.icon(
+                label: Text(
+                  AppString.textContinuewithGoogle,
+                  style:
+                      getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
+                ),
+                icon: Image.asset(
+                  AppImage.google,
+                  height: 30,
+                  width: 30,
+                ),
+                onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(AppColor.colorWhite),
+                ),
+              )),
           const SizedBox(
             height: 30,
           ),

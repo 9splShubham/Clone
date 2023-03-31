@@ -47,6 +47,13 @@ final List<String> imageTitles = [
 
 class _DashboardState extends State<Dashboard> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  int selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,10 +144,25 @@ class _DashboardState extends State<Dashboard> {
                     height: 40,
                     width: 40,
                   ),
-                  title: Text(
-                    AppString.textnotification,
-                    style:
-                        getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        AppString.textnotification,
+                        style: getTextStyle(
+                            AppFonts.regularBlack, AppSize.textSize16),
+                      ),
+                      CircleAvatar(
+                        radius: 10,
+                        backgroundColor: Colors.red,
+                        child: Padding(
+                          padding: const EdgeInsets.all(2), // Border radius
+                          child: Text("2",
+                              style: getTextStyle(
+                                  AppFonts.regular, AppSize.textSize12)),
+                        ),
+                      ),
+                    ],
                   ),
                   onTap: () {
                     Navigator.push(
@@ -270,6 +292,14 @@ class _DashboardState extends State<Dashboard> {
               ],
             ),
           ),
+          // body: IndexedStack(
+          //   index: selectedIndex,
+          //   children: [
+          //     Dashboard(),
+          //     AllCategory(),
+          //     Center(child: Text('Account')),
+          //   ],
+          // ),
           body: Scaffold(
             body: SingleChildScrollView(
               child: Column(
@@ -361,26 +391,29 @@ class _DashboardState extends State<Dashboard> {
                           height: 10,
                         ),
                         Container(
-                          height: 100,
-                          child: ListView.separated(
-                            separatorBuilder: (context, index) {
-                              return SizedBox(
-                                width: 20,
-                              );
-                            },
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 4,
-                            itemBuilder: (context, index) {
-                              return Column(children: [
-                                Container(
-                                  width: 80,
-                                  child: Image.asset(containerImages[index],
-                                      fit: BoxFit.cover),
-                                ),
-                                Text("${imageTitles[index]}")
-                              ]);
-                            },
-                          ),
+                          height: 120,
+                          child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 4,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(5),
+                                  child: Row(
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Image.asset(
+                                            containerImages[index],
+                                            height: 90,
+                                            width: 90,
+                                          ),
+                                          Text("${imageTitles[index]}")
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }),
                         ),
                         SizedBox(
                           height: 30,
@@ -402,6 +435,9 @@ class _DashboardState extends State<Dashboard> {
                               );
                             },
                           ),
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                         Container(
                           height: 350,
@@ -581,6 +617,135 @@ class _DashboardState extends State<Dashboard> {
                               style: getTextStyle(
                                   AppFonts.regularGreen, AppSize.textSize14),
                             )),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            AppString.textLatestNewsBlog,
+                            style: getTextStyle(
+                                AppFonts.mediumBoldBlack, AppSize.textSize18),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        SizedBox(
+                          height: 210,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              Row(
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 200,
+                                        width: 230,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              height: 130,
+                                              child: Image.asset(
+                                                AppImage.NWS,
+                                              ),
+                                            ),
+                                            Text(
+                                              AppString.textNWS,
+                                              style: getTextStyle(
+                                                  AppFonts.regularBlack,
+                                                  AppSize.textSize14),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  AppString.textCategoryName,
+                                                  style: getTextStyle(
+                                                      AppFonts.regularGrey,
+                                                      AppSize.textSize14),
+                                                ),
+                                                Text(
+                                                  AppString.text1hoursago,
+                                                  style: getTextStyle(
+                                                      AppFonts.regularGrey,
+                                                      AppSize.textSize14),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 200,
+                                        width: 230,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              height: 130,
+                                              child: Image.asset(
+                                                AppImage.NWS,
+                                              ),
+                                            ),
+                                            Text(
+                                              AppString.textNWS,
+                                              style: getTextStyle(
+                                                  AppFonts.regularBlack,
+                                                  AppSize.textSize14),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  AppString.textCategoryName,
+                                                  style: getTextStyle(
+                                                      AppFonts.regularGrey,
+                                                      AppSize.textSize14),
+                                                ),
+                                                Text(
+                                                  AppString.text1hoursago,
+                                                  style: getTextStyle(
+                                                      AppFonts.regularGrey,
+                                                      AppSize.textSize14),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
                         SizedBox(
                           height: 30,
                         ),

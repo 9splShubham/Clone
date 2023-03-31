@@ -180,6 +180,12 @@ class AppString {
   static const texto5 = "\$74.00";
   static const texto6 = "\$-13.00";
   static const texto7 = "\$61.00";
+  static const textCategoryName = "Category Name";
+  static const textOrderSuccessfullyPlaced = "Order Successfully Placed";
+  static const text1hoursago = "1 hours ago";
+  static const textViewMyOrder = "View My Order";
+  static const textNWS =
+      "Lorem Ipsum is simply dummy text of the printing and typesetting in…";
 
   // PAYMENT
 
@@ -194,4 +200,32 @@ class AppString {
   static const text200012652002 = "# 200012652002";
   static const textBancoFicohsaCheckingAccountDollar =
       "Banco Ficohsa - Checking Account Dollar";
+
+//MY ORDER
+  static const textOrderNo123321123 = "Order No: 123-321-123";
+  static const textOrderBy = "Order By";
+  static const textOrderDateTime = "Order Date & Time";
+  static const textjohndoemailcom = "johndoe@mail.com";
+  static const text20032021 = "20/03/2021 | 10:15";
+  static const textCancelOrder = "Cancel Order";
+  static const textTrackOrders = "Track Orders";
+  static const textOrderPlaced = "Order Placed";
+  static const textOrderConfirmed = "Order Confirmed";
+  static const textOrderProcessed = "Order Processed";
+  static const textReadytoShip = "Ready to Ship";
+  static const textDelivered = "Delivered";
+  static const textWilliamSadders = "William Sadders";
+  static const textTip$200 = "Tip: \$2.00";
+  static const textDownloadInvoice = "Download Invoice";
+  static const textdelivered = "Delivered";
+  static const textAddReason = "Add Reason";
+  static const textCancel = "Cancel";
+
+  static const textYourorderisreadyforshipping =
+      "Your order is ready for shipping";
+  static const textWearEpreparingyourorder = "We are preparing your order";
+  static const textWehasbeenconfirmedon200320211020 =
+      "We has been confirmed on 20/03/2021 | 10:20";
+  static const textWehavereceivedyourorderon200320211015 =
+      "We have received your order on 20/03/2021 | 10:15";
 }
