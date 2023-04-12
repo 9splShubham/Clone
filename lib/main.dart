@@ -1,8 +1,12 @@
+import 'package:clone/login/navigator_key.dart';
 import 'package:clone/otp_verification/otp_verification.dart';
+import 'package:clone/splash/new.dart';
 import 'package:clone/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
@@ -25,6 +29,10 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
+        navigatorKey: NavigatorKey.navigatorKey,
+        // home: const New());
+
         home: const Splash());
+    /*home: HomeForm());*/
   }
 }

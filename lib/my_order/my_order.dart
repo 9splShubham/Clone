@@ -29,7 +29,7 @@ class _MyOrderState extends State<MyOrder> {
           ],
         ),
       ),
-      body: MyStatefulWidget(),
+      body: const MyStatefulWidget(),
     );
   }
 }
@@ -51,7 +51,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
@@ -69,7 +69,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
@@ -87,7 +87,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               SizedBox(
@@ -109,7 +109,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Column(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 30,
                                 ),
                                 Center(
@@ -119,7 +119,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                         AppSize.textSize20),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 30,
                                 ),
                                 SizedBox(
@@ -134,11 +134,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                           AppFonts.regularGrey,
                                           AppSize.textSize14),
                                     ),
-                                    style: TextStyle(),
+                                    style: const TextStyle(),
                                     maxLines: 10,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Row(
@@ -161,7 +161,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                             side: const BorderSide(
                                                 color: AppColor.colorPrimary,
                                                 width: 2)),
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.pop(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const MyOrder()),
+                                          );
+                                        },
                                       ),
                                     ),
                                     SizedBox(
@@ -187,14 +194,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   },
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(
                 AppString.textTrackOrders,
                 style: getTextStyle(AppFonts.regularBlack2, AppSize.textSize16),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -211,7 +218,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   Column(
@@ -237,7 +244,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
@@ -254,7 +261,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   Column(
@@ -280,7 +287,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
@@ -297,7 +304,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   Column(
@@ -323,7 +330,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
@@ -340,7 +347,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   Column(
@@ -366,7 +373,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Row(
@@ -383,19 +390,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10),
                     child: Text(AppString.textdelivered),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Row(
@@ -406,7 +413,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     height: 40,
                     width: 40,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   Column(
@@ -424,7 +431,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 100,
                   ),
                   CircleAvatar(
@@ -438,7 +445,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       )),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 10,
                   ),
                   CircleAvatar(
@@ -454,7 +461,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
@@ -476,7 +483,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -494,7 +501,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -512,7 +519,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -530,7 +537,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -548,7 +555,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -566,7 +573,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -579,7 +586,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -597,7 +604,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -610,7 +617,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -628,7 +635,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Row(
@@ -639,14 +646,258 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                           style: getTextStyle(
                               AppFonts.regularBlack2, AppSize.textSize16),
                         ),
-                        Text(
-                          AppString.textViewDetail,
-                          style: getTextStyle(
-                              AppFonts.regularGreen, AppSize.textSize14),
+                        InkWell(
+                          child: Text(
+                            AppString.textViewDetail,
+                            style: getTextStyle(
+                                AppFonts.regularGreen, AppSize.textSize14),
+                          ),
+                          onTap: () {
+                            showModalBottomSheet(
+                                isScrollControlled: true,
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return SingleChildScrollView(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.stretch,
+                                        children: [
+                                          const SizedBox(
+                                            height: 30,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Expanded(
+                                                child: Align(
+                                                  alignment:
+                                                      Alignment.topCenter,
+                                                  child: Text(
+                                                    AppString.textProductList,
+                                                    style: getTextStyle(
+                                                        AppFonts.semiBoldBlack2,
+                                                        AppSize.textSize20),
+                                                  ),
+                                                ),
+                                              ),
+                                              InkWell(
+                                                child: Image.asset(
+                                                  AppImage.cancel,
+                                                  height: 20,
+                                                  width: 20,
+                                                ),
+                                                onTap: () {
+                                                  Navigator.pop(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            const MyOrder()),
+                                                  );
+                                                },
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Image.asset(
+                                                AppImage.doritos,
+                                                height: 50,
+                                                width: 50,
+                                              ),
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .stretch,
+                                                  children: [
+                                                    Text(
+                                                      AppString.textDoritostext,
+                                                      style: getTextStyle(
+                                                          AppFonts
+                                                              .regularBlack2,
+                                                          AppSize.textSize14),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Text(
+                                                          AppString.textQty5,
+                                                          style: getTextStyle(
+                                                              AppFonts
+                                                                  .regularGrey,
+                                                              AppSize
+                                                                  .textSize14),
+                                                        ),
+                                                        Text(
+                                                          AppString
+                                                              .textTotalPrice$1125,
+                                                          style: getTextStyle(
+                                                              AppFonts
+                                                                  .regularGreen,
+                                                              AppSize
+                                                                  .textSize14),
+                                                        ),
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Image.asset(
+                                                AppImage.Hamper,
+                                                height: 50,
+                                                width: 50,
+                                              ),
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    AppString.textAveenoBaby,
+                                                    style: getTextStyle(
+                                                        AppFonts.regularBlack2,
+                                                        AppSize.textSize14),
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        AppString.textQty1,
+                                                        style: getTextStyle(
+                                                            AppFonts
+                                                                .regularGrey,
+                                                            AppSize.textSize14),
+                                                      ),
+                                                      Text(
+                                                        AppString
+                                                            .textTotalPrice$2000,
+                                                        style: getTextStyle(
+                                                            AppFonts
+                                                                .regularGreen,
+                                                            AppSize.textSize14),
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Image.asset(
+                                                AppImage.hh,
+                                                height: 50,
+                                                width: 50,
+                                              ),
+                                              const SizedBox(
+                                                width: 20,
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    AppString
+                                                        .textHeadandShouldersShampoo,
+                                                    style: getTextStyle(
+                                                        AppFonts.regularBlack2,
+                                                        AppSize.textSize14),
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 10,
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        AppString.textQty1,
+                                                        style: getTextStyle(
+                                                            AppFonts
+                                                                .regularGrey,
+                                                            AppSize.textSize14),
+                                                      ),
+                                                      Text(
+                                                        AppString
+                                                            .textTotalPrice$1900,
+                                                        style: getTextStyle(
+                                                            AppFonts
+                                                                .regularGreen,
+                                                            AppSize.textSize14),
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 30,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                AppString.textSubTotal,
+                                                style: getTextStyle(
+                                                    AppFonts.regularBlack2,
+                                                    AppSize.textSize14),
+                                              ),
+                                              Text(
+                                                AppString.textTotalPrice$5025,
+                                                style: getTextStyle(
+                                                    AppFonts.regularGreen,
+                                                    AppSize.textSize14),
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 50,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                });
+                          },
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -657,7 +908,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         Container(height: 50, child: Image.asset(AppImage.p13)),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 60,
                     ),
                   ],

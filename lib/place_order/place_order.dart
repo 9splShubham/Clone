@@ -3,6 +3,7 @@ import 'package:clone/core/app_fonts.dart';
 import 'package:clone/core/app_image.dart';
 import 'package:clone/core/app_size.dart';
 import 'package:clone/core/app_string.dart';
+import 'package:clone/dashboard/widget/bottomsheet_select_payment_option.dart';
 import 'package:clone/order_placed/order_placed.dart';
 import 'package:flutter/material.dart';
 
@@ -38,6 +39,9 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  // String? option;
+  int x = 1;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -46,7 +50,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Card(
@@ -54,7 +58,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 height: 70,
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Padding(
@@ -75,7 +79,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Padding(
@@ -99,7 +103,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 height: 70,
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Padding(
@@ -120,7 +124,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Padding(
@@ -139,14 +143,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
               AppString.textDeliveryType,
               style: getTextStyle(AppFonts.regularBlack2, AppSize.textSize16),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -162,7 +166,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Row(
@@ -180,7 +184,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -192,7 +196,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 Container(height: 50, child: Image.asset(AppImage.p14)),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Card(
@@ -209,7 +213,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -227,7 +231,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -245,7 +249,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -263,7 +267,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -281,7 +285,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -299,7 +303,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -312,7 +316,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -330,7 +334,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -343,7 +347,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Row(
@@ -361,14 +365,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                   ],
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -386,7 +390,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             SizedBox(
@@ -403,165 +407,17 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       isScrollControlled: true,
                       context: context,
                       builder: (BuildContext context) {
-                        return SingleChildScrollView(
-                          child: SizedBox(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 30,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Expanded(
-                                        child: Align(
-                                          alignment: Alignment.topCenter,
-                                          child: Text(
-                                            AppString.textSelectPaymentOption,
-                                            style: getTextStyle(
-                                                AppFonts.semiBoldBlack2,
-                                                AppSize.textSize20),
-                                          ),
-                                        ),
-                                      ),
-                                      InkWell(
-                                        child: Image.asset(
-                                          AppImage.cancel,
-                                          height: 20,
-                                          width: 20,
-                                        ),
-                                        onTap: () {
-                                          Navigator.pop(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const PlaceOrder()),
-                                          );
-                                        },
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 50,
-                                  ),
-                                  Card(
-                                    child: RadioListTile(
-                                      title: Text(
-                                          AppString.textPayusingVisaMasterCard),
-                                      value: "info",
-                                      groupValue: "info",
-                                      onChanged: (value) {
-                                        setState(() {});
-                                      },
-                                    ),
-                                  ),
-                                  Card(
-                                    child: RadioListTile(
-                                      title: Text(AppString.textCashondelivery),
-                                      value: "info",
-                                      groupValue: "info",
-                                      onChanged: (value) {
-                                        setState(() {});
-                                      },
-                                    ),
-                                  ),
-                                  Card(
-                                    child: RadioListTile(
-                                      title: Text(AppString.textACHpayment),
-                                      value: "info",
-                                      groupValue: "info",
-                                      onChanged: (value) {
-                                        setState(() {});
-                                      },
-                                    ),
-                                  ),
-                                  Text(
-                                    AppString.textBankaccountsforTransfer,
-                                    style: getTextStyle(AppFonts.semiBoldBlack2,
-                                        AppSize.textSize16),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Text(
-                                    AppString
-                                        .textBancoFicohsaCheckingAccountLempiras,
-                                    style: getTextStyle(AppFonts.regularBlack2,
-                                        AppSize.textSize16),
-                                  ),
-                                  Text(
-                                    AppString.text200012651887,
-                                    style: getTextStyle(AppFonts.regularBlack2,
-                                        AppSize.textSize14),
-                                  ),
-                                  SizedBox(
-                                    height: 30,
-                                  ),
-                                  Text(
-                                    AppString
-                                        .textBancoFicohsaCheckingAccountLempiras,
-                                    style: getTextStyle(AppFonts.regularBlack2,
-                                        AppSize.textSize16),
-                                  ),
-                                  Text(
-                                    AppString.text200012651887,
-                                    style: getTextStyle(AppFonts.regularBlack2,
-                                        AppSize.textSize14),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Align(
-                                    alignment: Alignment.center,
-                                    child: Image.asset(
-                                      AppImage.ficohsa_logo,
-                                      height: 60,
-                                      width: 170,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  SizedBox(
-                                    height: 50,
-                                    width: double.infinity,
-                                    child: ElevatedButton(
-                                      child: Text(
-                                        AppString.textContinue,
-                                        style: getTextStyle(AppFonts.regular,
-                                            AppSize.textSize16),
-                                      ),
-                                      style: ElevatedButton.styleFrom(
-                                        primary: AppColor.colorPrimary,
-                                      ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const OrderPlaced()),
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 50,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                        return BottomSheetPaymentSelect(
+                          selectedIndex: x,
+                          onChange: (p0) {
+                            x = p0;
+                          },
                         );
                       });
                 },
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
           ],

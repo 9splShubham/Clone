@@ -35,12 +35,7 @@ class _OnboardState extends State<Onboard> {
               style: ElevatedButton.styleFrom(
                 primary: AppColor.colorPrimary,
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const login()),
-                );
-              },
+              onPressed: () {},
             ),
           ),
           const SizedBox(
@@ -119,14 +114,33 @@ class _OnboardState extends State<Onboard> {
           const SizedBox(
             height: 30,
           ),
-          Text.rich(TextSpan(children: [
+          /*     Text.rich(TextSpan(children: [
             TextSpan(
                 text: AppString.textAlreadyhaveanaccount,
                 style: getTextStyle(AppFonts.regularGrey, AppSize.textSize14)),
             TextSpan(
                 text: AppString.textSignIn,
                 style: getTextStyle(AppFonts.regularGreen, AppSize.textSize14))
-          ]))
+          ]))*/
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(AppString.textAlreadyhaveanaccount,
+                  style:
+                      getTextStyle(AppFonts.regularGrey, AppSize.textSize14)),
+              InkWell(
+                child: Text(
+                  AppString.textSignIn,
+                  style:
+                      getTextStyle(AppFonts.regularGreen, AppSize.textSize14),
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => login()));
+                },
+              )
+            ],
+          )
         ],
       ),
     );

@@ -13,7 +13,6 @@ import 'package:clone/popular_products/popular_products.dart';
 import 'package:clone/recommend_product/recommend_product.dart';
 import 'package:clone/rewards_coupons/rewards_coupons.dart';
 import 'package:clone/search/search.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {

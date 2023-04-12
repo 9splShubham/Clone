@@ -4,6 +4,7 @@ import 'package:clone/core/app_image.dart';
 import 'package:clone/core/app_size.dart';
 import 'package:clone/core/app_string.dart';
 import 'package:clone/dashboard/dashboard.dart';
+import 'package:clone/otp_verification/otp_verification.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -26,7 +27,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               AppString.textProductDetail,
               style: getTextStyle(AppFonts.regular, AppSize.textSize18),
             ),
-            SizedBox(
+            const SizedBox(
               width: 140,
             ),
             IconButton(
@@ -58,11 +59,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(height: 330, child: Image.asset(AppImage.hh)),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Row(
@@ -73,7 +74,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               Container(height: 50, child: Image.asset(AppImage.p3)),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Padding(
@@ -85,7 +86,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   style:
                       getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -95,6 +96,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       height: 50,
                       width: 160,
                       child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: AppColor.colorWhite,
+                            side: const BorderSide(
+                                color: AppColor.colorPrimary, width: 2)),
+                        onPressed: () {},
                         child: Text(
                           AppString.textAddtoWishlist,
                           style: getTextStyle(
@@ -102,29 +108,24 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                             AppSize.textSize16,
                           ),
                         ),
-                        style: ElevatedButton.styleFrom(
-                            primary: AppColor.colorWhite,
-                            side: const BorderSide(
-                                color: AppColor.colorPrimary, width: 2)),
-                        onPressed: () {},
                       ),
                     ),
                     SizedBox(
                       height: 50,
                       width: 160,
                       child: ElevatedButton(
-                        child: Text(AppString.textAddtoCart,
-                            style: getTextStyle(
-                                AppFonts.regular, AppSize.textSize16)),
                         style: ElevatedButton.styleFrom(
                           primary: AppColor.colorPrimary,
                         ),
                         onPressed: () {},
+                        child: Text(AppString.textAddtoCart,
+                            style: getTextStyle(
+                                AppFonts.regular, AppSize.textSize16)),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 Row(
@@ -135,7 +136,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       style: getTextStyle(
                           AppFonts.regularBlack, AppSize.textSize16),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Container(
@@ -155,13 +156,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                 height: 10,
                                 width: 10,
                               )),
-                          VerticalDivider(
+                          const VerticalDivider(
                             color: AppColor.colorgrey,
                             thickness: 1,
                           ),
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 3),
-                            padding: EdgeInsets.symmetric(
+                            margin: const EdgeInsets.symmetric(horizontal: 3),
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 3, vertical: 2),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(3),
@@ -172,7 +173,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                   AppFonts.regularBlack, AppSize.textSize20),
                             ),
                           ),
-                          VerticalDivider(
+                          const VerticalDivider(
                             color: AppColor.colorgrey,
                             thickness: 1,
                           ),
@@ -188,7 +189,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(
@@ -196,14 +197,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   style:
                       getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
                   AppString.textinfo,
                   style: getTextStyle(AppFonts.regularGrey, AppSize.textSize16),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -241,7 +242,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
               ],

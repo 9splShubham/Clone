@@ -203,7 +203,9 @@ class AppString {
 
 //MY ORDER
   static const textOrderNo123321123 = "Order No: 123-321-123";
+  static const textTotalPrice$5025 = "Total Price: \$50.25";
   static const textOrderBy = "Order By";
+  static const textProductList = "Product List";
   static const textOrderDateTime = "Order Date & Time";
   static const textjohndoemailcom = "johndoe@mail.com";
   static const text20032021 = "20/03/2021 | 10:15";
@@ -220,6 +222,13 @@ class AppString {
   static const textdelivered = "Delivered";
   static const textAddReason = "Add Reason";
   static const textCancel = "Cancel";
+  static const textVendor = "Vendor";
+  static const textQty5 = "Qty: 5";
+  static const textTotalPrice$1125 = "Total Price: \$11.25";
+  static const textQty1 = "Qty: 1";
+  static const textTotalPrice$2000 = "Total Price: \$20.00";
+  static const textTotalPrice$1900 = "Total Price: \$19.00";
+  static const textTotalPrice$6025 = "Total Price: \$60.25";
 
   static const textYourorderisreadyforshipping =
       "Your order is ready for shipping";
