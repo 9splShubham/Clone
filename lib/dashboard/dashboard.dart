@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:clone/Add_to_cart/AddToCart.dart';
 import 'package:clone/Product_details/product_details.dart';
@@ -14,6 +16,7 @@ import 'package:clone/recommend_product/recommend_product.dart';
 import 'package:clone/rewards_coupons/rewards_coupons.dart';
 import 'package:clone/search/search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -22,12 +25,12 @@ class Dashboard extends StatefulWidget {
   State<Dashboard> createState() => _DashboardState();
 }
 
-final List<String> containerImages = [
-  'assets/images/category1.png',
+/*final List<String> containerImages = [
+  'assets/images/rice.png',
   'assets/images/category2.png',
   'assets/images/category3.png',
   'assets/images/category4.png',
-];
+];*/
 
 final List<String> PopularImages = [
   'assets/images/doritos.png',
@@ -54,8 +57,29 @@ class _DashboardState extends State<Dashboard> {
     });
   }
 
+  List _category = [];
+
+  @override
+  void initState() {
+    readJson();
+    super.initState();
+  }
+
+  // Fetch content from the json file
+  Future<void> readJson() async {
+    final String response =
+        await rootBundle.loadString('assets/json/category.json');
+    final data = await json.decode(response);
+    setState(() {
+      _category = data["category"];
+    });
+
+    debugPrint('Category--${json.encode(_category)}');
+  }
+
   @override
   Widget build(BuildContext context) {
+    print('length--${_category.length}');
     return MaterialApp(
       home: Scaffold(
           key: scaffoldKey,
@@ -63,7 +87,7 @@ class _DashboardState extends State<Dashboard> {
             child: ListView(
               padding: EdgeInsets.zero,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 ListTile(
@@ -244,7 +268,7 @@ class _DashboardState extends State<Dashboard> {
                   AppString.textPharmacy,
                   style: getTextStyle(AppFonts.regular, AppSize.textSize18),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 70,
                 ),
                 SizedBox(
@@ -272,7 +296,7 @@ class _DashboardState extends State<Dashboard> {
                         ),
                       ),
                     )),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 IconButton(
@@ -337,7 +361,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
@@ -353,7 +377,7 @@ class _DashboardState extends State<Dashboard> {
                                 width: MediaQuery.of(context).size.width,
                                 margin:
                                     const EdgeInsets.symmetric(horizontal: 5.0),
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: Colors.white,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(15))),
@@ -363,7 +387,7 @@ class _DashboardState extends State<Dashboard> {
                       }).toList(),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Padding(
@@ -373,49 +397,62 @@ class _DashboardState extends State<Dashboard> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              child: Text(AppString.textCategory,
-                                  style: getTextStyle(AppFonts.mediumBoldBlack,
-                                      AppSize.textSize18)),
-                            ),
-                            Container(
-                              child: Text(AppString.textViewAllCategory,
-                                  textAlign: TextAlign.end,
-                                  style: getTextStyle(AppFonts.regularGreen,
-                                      AppSize.textSize14)),
-                            ),
+                            Text(AppString.textCategory,
+                                style: getTextStyle(AppFonts.mediumBoldBlack,
+                                    AppSize.textSize18)),
+                            Text(AppString.textViewAllCategory,
+                                textAlign: TextAlign.end,
+                                style: getTextStyle(
+                                    AppFonts.regularGreen, AppSize.textSize14)),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
-                        Container(
-                          height: 120,
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: 4,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(5),
-                                  child: Row(
-                                    children: [
-                                      Column(
-                                        children: [
-                                          Image.asset(
-                                            containerImages[index],
-                                            height: 90,
-                                            width: 90,
-                                          ),
-                                          Text("${imageTitles[index]}")
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              }),
-                        ),
-                        SizedBox(
-                          height: 30,
+                        _category.isNotEmpty
+                            ? Container(
+                                height: 120,
+                                child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: _category.length,
+                                    itemBuilder: (context, index) {
+                                      print(
+                                          'nameData--${_category[index]["image"]}');
+                                      return Padding(
+                                        padding: const EdgeInsets.only(
+                                            right: 10, left: 10),
+                                        child: Row(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  child: Image.network(
+                                                    _category[index]["image"],
+                                                    height: 80,
+                                                    width: 80,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Text(
+                                                  _category[index]["name"],
+                                                  style: getTextStyle(
+                                                      AppFonts.regularBlack2,
+                                                      AppSize.textSize14),
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                              )
+                            : Container(),
+                        const SizedBox(
+                          height: 20,
                         ),
                         Align(
                           alignment: Alignment.topLeft,
@@ -435,28 +472,28 @@ class _DashboardState extends State<Dashboard> {
                             },
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
-                        Container(
+                        SizedBox(
                           height: 350,
                           child: GridView.builder(
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: 4,
                               gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 0,
                                 mainAxisSpacing: 0,
                               ),
                               itemBuilder: (context, index) {
                                 return Card(
-                                  child: Container(
+                                  child: SizedBox(
                                       height: 300,
                                       width: 160,
                                       child: Column(
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             height: 100,
                                             child: InkWell(
                                               child: Image.asset(
@@ -473,7 +510,7 @@ class _DashboardState extends State<Dashboard> {
                                               },
                                             ),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 10,
                                           ),
                                           Padding(
@@ -486,7 +523,7 @@ class _DashboardState extends State<Dashboard> {
                                                       AppFonts.regularBlack2,
                                                       AppSize.textSize14),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 10,
                                                 ),
                                                 Row(
@@ -511,7 +548,7 @@ class _DashboardState extends State<Dashboard> {
                                 );
                               }),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Align(
@@ -521,7 +558,7 @@ class _DashboardState extends State<Dashboard> {
                               style: getTextStyle(
                                   AppFonts.regularGreen, AppSize.textSize14),
                             )),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Align(
@@ -542,35 +579,35 @@ class _DashboardState extends State<Dashboard> {
                             },
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
-                        Container(
+                        SizedBox(
                           height: 360,
                           child: GridView.builder(
                               itemCount: 4,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 10,
                                 mainAxisSpacing: 10,
                               ),
                               itemBuilder: (context, index) {
                                 return Card(
-                                  child: Container(
+                                  child: SizedBox(
                                       height: 240,
                                       width: 160,
                                       child: Column(
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             height: 90,
                                             width: 150,
                                             child: Image.asset(
                                                 RecommendProduct()[index]
                                                     .image!),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 10,
                                           ),
                                           Padding(
@@ -584,7 +621,7 @@ class _DashboardState extends State<Dashboard> {
                                                       AppFonts.regularBlack2,
                                                       AppSize.textSize14),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 30,
                                                 ),
                                                 Row(
@@ -606,7 +643,7 @@ class _DashboardState extends State<Dashboard> {
                                 );
                               }),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Align(
@@ -616,7 +653,7 @@ class _DashboardState extends State<Dashboard> {
                               style: getTextStyle(
                                   AppFonts.regularGreen, AppSize.textSize14),
                             )),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Align(
@@ -627,7 +664,7 @@ class _DashboardState extends State<Dashboard> {
                                 AppFonts.mediumBoldBlack, AppSize.textSize18),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         SizedBox(
@@ -641,14 +678,14 @@ class _DashboardState extends State<Dashboard> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Container(
+                                      SizedBox(
                                         height: 200,
                                         width: 230,
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               height: 130,
                                               child: Image.asset(
                                                 AppImage.NWS,
@@ -660,7 +697,7 @@ class _DashboardState extends State<Dashboard> {
                                                   AppFonts.regularBlack,
                                                   AppSize.textSize14),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
                                             Row(
@@ -687,21 +724,21 @@ class _DashboardState extends State<Dashboard> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 20,
                                   ),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Container(
+                                      SizedBox(
                                         height: 200,
                                         width: 230,
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
                                           children: [
-                                            Container(
+                                            SizedBox(
                                               height: 130,
                                               child: Image.asset(
                                                 AppImage.NWS,
@@ -713,7 +750,7 @@ class _DashboardState extends State<Dashboard> {
                                                   AppFonts.regularBlack,
                                                   AppSize.textSize14),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
                                             Row(
@@ -745,7 +782,7 @@ class _DashboardState extends State<Dashboard> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Align(
@@ -756,12 +793,12 @@ class _DashboardState extends State<Dashboard> {
                                 AppFonts.mediumBoldBlack, AppSize.textSize18),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Row(
                           children: [
-                            Container(
+                            SizedBox(
                               height: 130,
                               width: 130,
                               child: Image.asset(
@@ -769,10 +806,10 @@ class _DashboardState extends State<Dashboard> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
-                            Container(
+                            SizedBox(
                               height: 130,
                               width: 130,
                               child: Image.asset(
@@ -782,7 +819,7 @@ class _DashboardState extends State<Dashboard> {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Align(
@@ -793,12 +830,12 @@ class _DashboardState extends State<Dashboard> {
                                 AppFonts.mediumBoldBlack, AppSize.textSize18),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Wrap(
                           children: [
-                            Container(
+                            SizedBox(
                               height: 60,
                               width: 60,
                               child: Image.asset(
@@ -806,10 +843,10 @@ class _DashboardState extends State<Dashboard> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            Container(
+                            SizedBox(
                               height: 60,
                               width: 60,
                               child: Image.asset(
@@ -817,10 +854,10 @@ class _DashboardState extends State<Dashboard> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            Container(
+                            SizedBox(
                               height: 60,
                               width: 60,
                               child: Image.asset(
@@ -828,10 +865,10 @@ class _DashboardState extends State<Dashboard> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            Container(
+                            SizedBox(
                               height: 60,
                               width: 60,
                               child: Image.asset(
@@ -839,10 +876,10 @@ class _DashboardState extends State<Dashboard> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            Container(
+                            SizedBox(
                               height: 60,
                               width: 60,
                               child: Image.asset(
@@ -850,10 +887,10 @@ class _DashboardState extends State<Dashboard> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            Container(
+                            SizedBox(
                               height: 60,
                               width: 60,
                               child: Image.asset(
@@ -861,10 +898,10 @@ class _DashboardState extends State<Dashboard> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            Container(
+                            SizedBox(
                               height: 60,
                               width: 60,
                               child: Image.asset(
@@ -872,7 +909,7 @@ class _DashboardState extends State<Dashboard> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
                           ],

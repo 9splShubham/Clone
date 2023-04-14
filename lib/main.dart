@@ -1,5 +1,7 @@
+import 'package:clone/dashboard/dashboard.dart';
 import 'package:clone/login/navigator_key.dart';
 import 'package:clone/otp_verification/otp_verification.dart';
+import 'package:clone/registration/registration.dart';
 import 'package:clone/splash/new.dart';
 import 'package:clone/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +35,8 @@ class MyApp extends StatelessWidget {
         // home: const New());
 
         home: const Splash());
+    /*    home: const Registration());*/
+
     /*home: HomeForm());*/
   }
 }

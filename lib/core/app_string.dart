@@ -222,7 +222,7 @@ class AppString {
   static const textdelivered = "Delivered";
   static const textAddReason = "Add Reason";
   static const textCancel = "Cancel";
-  static const textVendor = "Vendor";
+  static const texttype = "type";
   static const textQty5 = "Qty: 5";
   static const textTotalPrice$1125 = "Total Price: \$11.25";
   static const textQty1 = "Qty: 1";

@@ -1,0 +1,24 @@
+{
+  "category": [
+    {
+      "id": 1,
+      "name": "Rice",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwJdMPVvaSEqYP_fbMmfbg6p78vtkNARBmGAHim6s1skCEQSCg2LyCZku7TAeQ8u1m8BhyQzhqqpqHTehZfLZNCfAlWG9ekNQa5Rpx0YU8LUKkWNcFbzR7TzeXtXxIUxuW3G8-UFt6u6qxuWAHL0JF8Qee1phr5NMwG7D9fQsawzg3fHowfW3uGwGl1A/s320/Untitled%20design%20(5).png"
+    },
+    {
+      "id": 2,
+      "name": "Beverages",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjlVID2s3CXsAHt5diF1ueMgt0aj7lkloZBff3MRI0LiH1MPxhhAOn_ZhYcjFcfKmDFkPKT5xX79HjnYR9LGJxlFrTeqBU7KhRvCAkLc3QS7MPf95j2wm9fLi2eniFXQd7WDYtDytQbyZyHX78tTn9h9DYbx2nkZXjQ64aB-VhvjLMJJXhakbBeKpWmBw/s320/Untitled%20design%20(6).png"
+    },
+    {
+      "id": 3,
+      "name": "Baby Care",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2jGqVdtpZ0G-Xz7sjJKzHd0C5gEigO3VfN8vThI6pXxXer_smRRvaTTxXEpCu4FWG6vpBQfESJTspC-M_muRwLfPhtJmr51NOx19Nr15Xxmf1TqhGRv8ZsbURqAF0YDtjK3BOWs9_z9k2hA4gaomMWSCOwoNyFaHdxbBcYwKldOhnmRYcw4Fd9YpxAg/s320/Untitled%20design%20(7).png"
+    },
+    {
+      "id": 4,
+      "name": "Cookies",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzqAgq5B4Ykc-fLzRsHvdmhdP45yOQ0GqqYJWYeflrS_HJQLidKh7zNdH4DmrPgRPtjuOVGbGk0AV3MCGKehKYfo3izqqj89ffuAVOE1TB6W2sI8D6MGW00Sdy7a8XfM25BKxkIVhclJuylzKh8Y-XiIdrTQ6Ys4k9Lp7iW2QZ72_58T_EvGTVH_-8oQ/s320/Untitled%20design%20(4).png"
+    }
+  ]
+}

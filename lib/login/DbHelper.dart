@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'package:sqflite/sqflite.dart';
@@ -9,14 +10,16 @@ import 'user_model.dart';
 class DbHelper {
   late Database _db;
 
-  static const String DB_Name = 'pharma.db';
+  static const String DB_Name = 'phcy.db';
   static const String Table_User = 'user';
-  static const int Version = 2;
+  static const int Version = 3;
   static const String C_UserID = 'id';
   static const String C_UserName = 'name';
   static const String C_Email = 'email';
   static const String C_MobileNo = 'mobileno';
   static const String C_Password = 'password';
+  static const String C_Type = 'usertype';
+  static const String C_TypeName = 'usertypeName';
 
   Future<Database> get db async {
     /* if (_db != null) {
@@ -39,6 +42,8 @@ class DbHelper {
         " $C_UserName TEXT, "
         " $C_Email TEXT ,"
         " $C_MobileNo TEXT,"
+        " $C_Type INTEGER,"
+        " $C_TypeName TEXT,"
         " $C_Password TEXT "
         /*  " PRIMARY KEY ($C_UserID)"*/
         ")");
@@ -72,6 +77,40 @@ class DbHelper {
     }
     return UserModel();
   }
+
+  Future<UserModel> printCheckUserType(bool vendor) async {
+    var dbClient = await db;
+    var res = await dbClient.rawQuery(
+        "INSERT INTO $Table_User ($C_Type) VALUES ('?')",
+        [vendor ? 'vendor' : 'Customer']);
+
+    if (res.length > 0) {
+      return UserModel.fromJson(res.first);
+    }
+    return UserModel();
+  }
+
+/*  Future<UserModel> printVendor() async {
+    var dbClient = await db;
+    var res = await dbClient
+        .rawQuery('''INSERT INTO $Table_User ($C_Type) VALUES('vendor')''');
+
+    if (res.length > 0) {
+      return UserModel.fromJson(res.first);
+    }
+    return UserModel();
+  }
+
+  Future<UserModel> printCustomer() async {
+    var dbClient = await db;
+    var res = await dbClient
+        .rawQuery('''INSERT INTO $Table_User ($C_Type) VALUES('Customer')''');
+
+    if (res.length > 0) {
+      return UserModel.fromJson(res.first);
+    }
+    return UserModel();
+  }*/
 
   Future<int> updateUser(UserModel user) async {
     var dbClient = await db;

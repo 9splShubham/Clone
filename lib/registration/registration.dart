@@ -34,9 +34,13 @@ class _RegistrationState extends State<Registration> {
   var dbHelper;
 
   @override
+  int _value = 2;
+
   void initState() {
     super.initState();
     dbHelper = DbHelper();
+
+    _value = 0;
   }
 
   signUp() async {
@@ -45,6 +49,7 @@ class _RegistrationState extends State<Registration> {
     String mobilenumber = mobilenumbercontroller.text;
     String password = passwordcontroller.text;
     String confirmpassword = confirmpasswordcontroller.text;
+    String userTypeName = '';
 
     bool isExist = false;
     if (emailaddress.isNotEmpty) {
@@ -53,7 +58,23 @@ class _RegistrationState extends State<Registration> {
           isExist = true;
         }
       });
+
+      if (_value == 0) {
+        userTypeName = 'Vendor';
+      } else {
+        userTypeName = 'Customer';
+      }
+
+      /* if (_value == 1) {
+        await dbHelper.printVendor().then((userData) {});
+      } else if (_value == 2) {
+        await dbHelper.printCustomer().then((userData) {});
+      }*/
     }
+
+    /* else if (_value == 1) {
+      await dbHelper.printVendor(_value).then((userData) {});
+    }*/
 
     ///if (_formKey.currentState!.validate()) {
     if (password != confirmpassword) {
@@ -84,6 +105,8 @@ class _RegistrationState extends State<Registration> {
       uModel.email = emailaddress;
       uModel.mobileno = mobilenumber;
       uModel.password = password;
+      uModel.usertype = _value;
+      uModel.usertypeName = userTypeName;
       dbHelper = DbHelper();
       await dbHelper.saveData(uModel).then((userData) {
         alertDialog("Successfully Saved");
@@ -227,6 +250,31 @@ class _RegistrationState extends State<Registration> {
                     ),
                     const SizedBox(
                       height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Radio(
+                            activeColor: AppColor.colorPrimary,
+                            value: 0,
+                            groupValue: _value,
+                            onChanged: (value) {
+                              setState(() {
+                                _value = value!;
+                              });
+                            }),
+                        Text("Vendor"),
+                        Radio(
+                            activeColor: AppColor.colorPrimary,
+                            value: 1,
+                            groupValue: _value,
+                            onChanged: (value) {
+                              setState(() {
+                                _value = value!;
+                              });
+                            }),
+                        Text("Customer"),
+                      ],
                     ),
                     Align(
                       alignment: Alignment.topLeft,

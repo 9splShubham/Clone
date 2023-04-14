@@ -90,4 +90,7 @@ class AppImage {
   static const String p = '${filePath}p.png';
   static const String m = '${filePath}m.png';
   static const String c = '${filePath}c.png';
+
+  // category
+  static const String rice = '${filePath}rice.png';
 }
