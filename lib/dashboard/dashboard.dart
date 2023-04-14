@@ -10,13 +10,17 @@ import 'package:clone/core/app_image.dart';
 import 'package:clone/core/app_size.dart';
 import 'package:clone/core/app_string.dart';
 import 'package:clone/dashboard/category.dart';
+import 'package:clone/login/com_helper.dart';
 import 'package:clone/notifications/notifications.dart';
 import 'package:clone/popular_products/popular_products.dart';
 import 'package:clone/recommend_product/recommend_product.dart';
 import 'package:clone/rewards_coupons/rewards_coupons.dart';
 import 'package:clone/search/search.dart';
+import 'package:clone/splash/splash_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -76,6 +80,14 @@ class _DashboardState extends State<Dashboard> {
 
     debugPrint('Category--${json.encode(_category)}');
   }
+
+/*  void onLogout() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    sp.clear();
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => Splash()),
+        (Route<dynamic> route) => false);
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -234,11 +246,14 @@ class _DashboardState extends State<Dashboard> {
                     width: 40,
                   ),
                   title: Text(
-                    AppString.textSettings,
+                    AppString.textLogout,
                     style:
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    alertDialog("Are you sure you want to logout?");
+                    // onLogout();
+                  },
                 ),
               ],
             ),

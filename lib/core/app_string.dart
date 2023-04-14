@@ -78,6 +78,11 @@ class AppString {
   static const textRewardCoupons = "Rewards & Coupons";
   static const textNewsBlog = "News & Blog";
   static const textSettings = "Settings";
+  static const textLogout = "Logout";
+  static const textVendor = "Vendor";
+  static const textProduct = "Product";
+  static const textMyorder = "My Order";
+  static const textOrderHistory = "Order History";
 
 // Popular products
   static const textDoritostext = 'Doritos Tangy Cheese Corn Chips';

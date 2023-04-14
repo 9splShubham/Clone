@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:clone/Onboard/Onboard.dart';
 import 'package:clone/core/app_color.dart';
+import 'package:clone/core/app_config.dart';
 import 'package:clone/core/app_fonts.dart';
 import 'package:clone/core/app_image.dart';
 import 'package:clone/core/app_size.dart';
@@ -15,6 +16,7 @@ import 'package:clone/login/navigator_key.dart';
 
 import 'package:clone/otp_verification/otp_verification.dart';
 import 'package:clone/registration/registration.dart';
+import 'package:clone/vendor/vendor.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -96,11 +98,25 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         if (userData != null && userData.email != null) {
           print('else------->then----->');
           setSP(userData).whenComplete(() {
+            if (userData.usertype == 0) {
+              Navigator.pushAndRemoveUntil(
+                  NavigatorKey.navigatorKey.currentContext!,
+                  MaterialPageRoute(builder: (_) => const Vendor()),
+                  (Route<dynamic> route) => false);
+            } else {
+              Navigator.pushAndRemoveUntil(
+                  NavigatorKey.navigatorKey.currentContext!,
+                  MaterialPageRoute(builder: (_) => const Dashboard()),
+                  (Route<dynamic> route) => false);
+            }
+          });
+
+          /*   setSP(userData).whenComplete(() {
             Navigator.pushAndRemoveUntil(
                 NavigatorKey.navigatorKey.currentContext!,
                 MaterialPageRoute(builder: (_) => const Dashboard()),
                 (Route<dynamic> route) => false);
-          });
+          });*/
         } else {
           alertDialog("Error: User Not Found");
         }
@@ -117,10 +133,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     print('object--->${jsonEncode(user)}');
 
     ///sp.setString("id", user.id!);
+    sp.setInt(AppConfig.textUserId, user.id!);
     sp.setString("name", user.name!);
     sp.setString("email", user.email!);
     sp.setString("mobileno", user.mobileno!);
     sp.setString("password", user.password!);
+    sp.setInt(AppConfig.textUserType, user.usertype!);
   }
 
   @override
