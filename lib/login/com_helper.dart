@@ -6,13 +6,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:toast/toast.dart';
 
-/*void onLogout() async {
+/*
+void onLogout() async {
   SharedPreferences sp = await SharedPreferences.getInstance();
   sp.clear();
   Navigator.of(context as BuildContext).pushAndRemoveUntil(
       MaterialPageRoute(builder: (context) => Splash()),
       (Route<dynamic> route) => false);
-}*/
+}
+*/
 
 alertDialog(String msg) {
   //Toast.show(msg, context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);

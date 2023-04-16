@@ -242,4 +242,18 @@ class AppString {
       "We has been confirmed on 20/03/2021 | 10:20";
   static const textWehavereceivedyourorderon200320211015 =
       "We have received your order on 20/03/2021 | 10:15";
+
+  // ORDER
+  static const textorderNo123321123 = "Order No: 123-321-123";
+  static const text$5025 = "\$50.25";
+  static const textorderBy = "Order By";
+  static const textJhohndoemailcom = "johndoe@mail.com";
+  static const textorderDateTime = "Order Date & Time";
+  static const text200320211015 = "20/03/2021 | 10:15";
+  static const textOrderNo235321546 = "Order No: 235-321-546";
+  static const textL60025 = "L600.25";
+  static const textQuantity = "Quantity : 1";
+  static const textEdit = "Edit";
+  static const text180320211300 = "18/03/2021 | 13:00";
+
 }

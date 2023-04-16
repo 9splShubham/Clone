@@ -81,13 +81,15 @@ class _DashboardState extends State<Dashboard> {
     debugPrint('Category--${json.encode(_category)}');
   }
 
-/*  void onLogout() async {
+  void onLogout() async {
+
     SharedPreferences sp = await SharedPreferences.getInstance();
     sp.clear();
+
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => Splash()),
         (Route<dynamic> route) => false);
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {

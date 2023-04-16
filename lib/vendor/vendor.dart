@@ -6,7 +6,11 @@ import 'package:clone/core/app_image.dart';
 import 'package:clone/core/app_size.dart';
 import 'package:clone/core/app_string.dart';
 import 'package:clone/login/com_helper.dart';
+import 'package:clone/vendor/product_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'my_order_screen.dart';
+import 'order_history.dart';
 
 class Vendor extends StatefulWidget {
   const Vendor({Key? key}) : super(key: key);
@@ -103,9 +107,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       body: IndexedStack(
         index: selectedIndex,
         children: const [
-          /*    TabHome(),
-             ScreenFeed(),*/
-          Center(child: Text('Account')),
+
+          Product(),
+          MyOrder(),
+          OrderHistory(),
+
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
