@@ -6,14 +6,15 @@ import 'package:clone/core/app_size.dart';
 import 'package:clone/core/app_string.dart';
 import 'package:clone/login/com_helper.dart';
 import 'package:clone/place_order/place_order.dart';
+import 'package:clone/vendor/bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 
 class Product extends StatefulWidget {
   const Product({Key? key}) : super(key: key);
 
   @override
   State<Product> createState() => _Product();
-
 }
 
 class _Product extends State<Product> {
@@ -83,7 +84,6 @@ class _Product extends State<Product> {
                                       SizedBox(
                                         width: 30,
                                       ),
-
                                       InkWell(
                                         child: Text(
                                           AppString.textEdit,
@@ -91,7 +91,7 @@ class _Product extends State<Product> {
                                               AppFonts.regularGrey,
                                               AppSize.textSize14),
                                         ),
-                                        onTap: (){},
+                                        onTap: () {},
                                       ),
                                       SizedBox(
                                         width: 50,
@@ -109,9 +109,9 @@ class _Product extends State<Product> {
                                             )),
                                           ),
                                         ),
-                                        onTap: (){
-
-                                          alertDialog("Are you sure you want to delete the item?");
+                                        onTap: () {
+                                          alertDialog(
+                                              "Are you sure you want to delete the item?");
                                         },
                                       ),
                                     ],
@@ -125,6 +125,29 @@ class _Product extends State<Product> {
                     ),
                   );
                 }),
+            SizedBox(
+              height: 170,
+            ),
+            Align(
+              alignment: Alignment.topRight,
+              child: ElevatedButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (builder) {
+                        return BottomSheetProduct();
+                      });
+                },
+                child: Icon(
+                  Icons.add,
+                  color: AppColor.colorWhite,
+                ),
+                style: ElevatedButton.styleFrom(
+                    shape: CircleBorder(),
+                    padding: EdgeInsets.all(10),
+                    backgroundColor: AppColor.colorPrimary),
+              ),
+            )
           ],
         ),
       ),

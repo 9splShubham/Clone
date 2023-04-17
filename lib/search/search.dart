@@ -7,14 +7,14 @@ import 'package:clone/dashboard/category.dart';
 import 'package:clone/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 
-class Search extends StatefulWidget {
-  const Search({Key? key}) : super(key: key);
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({Key? key}) : super(key: key);
 
   @override
-  State<Search> createState() => search();
+  State<SearchScreen> createState() => search();
 }
 
-class search extends State<Search> {
+class search extends State<SearchScreen> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override

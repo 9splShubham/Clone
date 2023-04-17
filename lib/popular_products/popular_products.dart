@@ -7,14 +7,14 @@ import 'package:clone/dashboard/category.dart';
 import 'package:clone/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 
-class PopularProducts extends StatefulWidget {
-  const PopularProducts({Key? key}) : super(key: key);
+class PopularProductsScreen extends StatefulWidget {
+  const PopularProductsScreen({Key? key}) : super(key: key);
 
   @override
-  State<PopularProducts> createState() => PopularProductsState();
+  State<PopularProductsScreen> createState() => PopularProductsState();
 }
 
-class PopularProductsState extends State<PopularProducts> {
+class PopularProductsState extends State<PopularProductsScreen> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -80,7 +80,6 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
-
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -89,11 +88,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             SizedBox(
               height: 20,
             ),
-
-
             Container(
               height: 750,
-
               child: GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: 8,
@@ -124,7 +120,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                   children: [
                                     Text(
                                       items2()[index].name!,
-                                      style: getTextStyle(AppFonts.regularBlack2,
+                                      style: getTextStyle(
+                                          AppFonts.regularBlack2,
                                           AppSize.textSize14),
                                     ),
                                     SizedBox(

@@ -83,6 +83,7 @@ class AppString {
   static const textProduct = "Product";
   static const textMyorder = "My Order";
   static const textOrderHistory = "Order History";
+  static const textAddProduct = "Add Products";
 
 // Popular products
   static const textDoritostext = 'Doritos Tangy Cheese Corn Chips';
@@ -256,4 +257,14 @@ class AppString {
   static const textEdit = "Edit";
   static const text180320211300 = "18/03/2021 | 13:00";
 
+  // BOTTOM SHEET ADD PRODUCT (VENDOR)
+  static const textEnterproductname = "Enter product name";
+  static const textEnterproductprice = "Enter product price";
+  static const textEnterproductimage = "Enter product image";
+  static const textAdd = "Add";
+  static const textSelectCategory = "Select Category ";
+  static const textRice = "Rice ";
+  static const textBeverages = "Beverages ";
+  static const textBabyCare = "BabyCare ";
+  static const textCookies = "Cookies ";
 }

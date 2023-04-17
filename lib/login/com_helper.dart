@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:clone/login/navigator_key.dart';
 import 'package:clone/splash/splash_screen.dart';
 import 'package:flutter/material.dart';

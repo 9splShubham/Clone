@@ -82,7 +82,6 @@ class _DashboardState extends State<Dashboard> {
   }
 
   void onLogout() async {
-
     SharedPreferences sp = await SharedPreferences.getInstance();
     sp.clear();
 
@@ -253,8 +252,8 @@ class _DashboardState extends State<Dashboard> {
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize16),
                   ),
                   onTap: () {
-                    alertDialog("Are you sure you want to logout?");
-                    // onLogout();
+                    // alertDialog("Are you sure you want to logout?");
+                    onLogout();
                   },
                 ),
               ],
@@ -364,7 +363,7 @@ class _DashboardState extends State<Dashboard> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const Search()),
+                                        builder: (context) => SearchScreen()),
                                   );
                                 },
                               ),
@@ -484,7 +483,7 @@ class _DashboardState extends State<Dashboard> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const PopularProducts()),
+                                        const PopularProductsScreen()),
                               );
                             },
                           ),
@@ -591,7 +590,7 @@ class _DashboardState extends State<Dashboard> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const RecommendProducts()),
+                                        const RecommendProductsScreen()),
                               );
                             },
                           ),

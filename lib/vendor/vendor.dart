@@ -107,11 +107,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       body: IndexedStack(
         index: selectedIndex,
         children: const [
-
           Product(),
           MyOrder(),
           OrderHistory(),
-
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );

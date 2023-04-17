@@ -7,14 +7,14 @@ import 'package:clone/dashboard/category.dart';
 import 'package:clone/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 
-class RecommendProducts extends StatefulWidget {
-  const RecommendProducts({Key? key}) : super(key: key);
+class RecommendProductsScreen extends StatefulWidget {
+  const RecommendProductsScreen({Key? key}) : super(key: key);
 
   @override
-  State<RecommendProducts> createState() => _RecommendProductsState();
+  State<RecommendProductsScreen> createState() => _RecommendProductsState();
 }
 
-class _RecommendProductsState extends State<RecommendProducts> {
+class _RecommendProductsState extends State<RecommendProductsScreen> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override

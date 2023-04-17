@@ -119,10 +119,10 @@ class DbHelper {
     return res;
   }
 
-  Future<int> deleteUser(String user_id) async {
+  Future<int> deleteUser(int user_id) async {
     var dbClient = await db;
     var res = await dbClient
-        .delete(Table_User, where: '$C_UserID >10', whereArgs: [user_id]);
+        .delete(Table_User, where: '$C_UserID =5', whereArgs: [user_id]);
     return res;
   }
 }
