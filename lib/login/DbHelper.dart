@@ -6,6 +6,7 @@ import 'package:path/path.dart';
 import 'dart:io' as io;
 
 import 'user_model.dart';
+import 'product_model.dart';
 
 class DbHelper {
   late Database _db;
@@ -20,6 +21,16 @@ class DbHelper {
   static const String C_Password = 'password';
   static const String C_Type = 'usertype';
   static const String C_TypeName = 'usertypeName';
+
+  static const String Table_Product = 'product';
+  static const String Product_Id = 'Product_id';
+  static const String Product_Name = 'Product_name';
+  static const String Product_Category = 'Product_category';
+  static const String Product_Image = 'Product_image';
+  static const String Product_Desc = 'Product_description';
+  static const String Product_Price = 'Product_price';
+  static const String Product_Qty = 'Product_quantity';
+  static const String Product_User_Id = 'User_id';
 
   Future<Database> get db async {
     /* if (_db != null) {
@@ -47,11 +58,28 @@ class DbHelper {
         " $C_Password TEXT "
         /*  " PRIMARY KEY ($C_UserID)"*/
         ")");
+
+    await db.execute("CREATE TABLE $Table_Product ("
+        " $Product_Id INTEGER PRIMARY KEY, "
+        " $Product_Name TEXT, "
+        " $Product_Category INTEGER,"
+        " $Product_Image TEXT,"
+        " $Product_Desc TEXT,"
+        " $Product_Price INTEGER,"
+        " $Product_Qty INTEGER,"
+        " $Product_User_Id INTEGER "
+        ")");
   }
 
   Future<int> saveData(UserModel user) async {
     var dbClient = await db;
     var res = await dbClient.insert(Table_User, user.toJson());
+    return res;
+  }
+
+  Future<int> saveProduct(ProductModel product) async {
+    var dbClient = await db;
+    var res = await dbClient.insert(Table_Product, product.toJson());
     return res;
   }
 

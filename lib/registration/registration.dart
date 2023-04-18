@@ -77,20 +77,35 @@ class _RegistrationState extends State<Registration> {
     }*/
 
     ///if (_formKey.currentState!.validate()) {
-    if (password != confirmpassword) {
-      alertDialog('Password Mismatch');
-    } else if (fullname.isEmpty) {
+
+    if (fullname.isEmpty) {
       alertDialog("Please Enter Name");
     } else if (emailaddress.isEmpty) {
       alertDialog("Please Enter Email ID");
+    } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+        .hasMatch(emailaddress)) {
+      alertDialog("Invalid Email");
     } else if (isExist) {
       alertDialog("This Email ID already Exists. Please Enter new Email");
     } else if (mobilenumber.isEmpty) {
       alertDialog("Please Enter Mobile No");
-    } else if (password.isEmpty) {
+    } else if (!RegExp(r'^[0-9]{10}$').hasMatch(mobilenumber)) {
+      alertDialog("Invalid Mobile No");
+    }
+    /*else if (!RegExp(r'^(?:[+0][1-9])?[0-9]{10,12}$')
+        .hasMatch(mobilenumber)) {
+      alertDialog("Invalid Mobile No");
+    } */
+    else if (password.isEmpty) {
       alertDialog("Please Enter Password");
+    } else if (!RegExp(r'(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)')
+        .hasMatch(password)) {
+      alertDialog(
+          "Please Enter Strong Password\n\nHint : Password must contain Upper/Lower case, number and special character");
     } else if (confirmpassword.isEmpty) {
       alertDialog("Please Enter Confirm Password");
+    } else if (password != confirmpassword) {
+      alertDialog('Password Mismatch');
     }
     /*else if (emailaddress == DbHelper.C_Email) {
       print('else _if----->');

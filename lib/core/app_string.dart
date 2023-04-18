@@ -267,4 +267,6 @@ class AppString {
   static const textBeverages = "Beverages ";
   static const textBabyCare = "BabyCare ";
   static const textCookies = "Cookies ";
+  static const textEnterQuantity = "Enter product quantity ";
+  static const textEnterDesc = "Enter product description ";
 }
