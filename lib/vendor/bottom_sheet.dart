@@ -10,6 +10,7 @@ import 'package:clone/core/app_string.dart';
 import 'package:clone/login/DbHelper.dart';
 import 'package:clone/login/com_helper.dart';
 import 'package:clone/login/product_model.dart';
+import 'package:clone/vendor/vendor.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -91,7 +92,7 @@ class _BottomSheetProduct extends State<BottomSheetProduct> {
       await dbHelper.saveProduct(pModel).then((userData) {
         alertDialog("Successfully Saved");
 
-        Navigator.push(context, MaterialPageRoute(builder: (_) => Product()));
+        Navigator.push(context, MaterialPageRoute(builder: (_) => Vendor()));
       });
     }
   }
