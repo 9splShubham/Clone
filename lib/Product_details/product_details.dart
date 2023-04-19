@@ -4,7 +4,10 @@ import 'package:clone/core/app_image.dart';
 import 'package:clone/core/app_size.dart';
 import 'package:clone/core/app_string.dart';
 import 'package:clone/dashboard/dashboard.dart';
+import 'package:clone/login/DbHelper.dart';
+import 'package:clone/login/com_helper.dart';
 import 'package:clone/otp_verification/otp_verification.dart';
+import 'package:clone/vendor/cart_model.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -53,6 +56,38 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  var dbHelper;
+
+  @override
+  void initState() {
+    super.initState();
+    dbHelper = DbHelper();
+  }
+
+  Cart() async {
+    String cartId = '';
+    String cartProductId = '';
+    String cartProductQty = '';
+    String userId = '';
+
+    CartModel cModel = CartModel();
+
+    cModel.cartId = int.parse(cartId);
+    cModel.cartProductId = int.parse(cartProductId);
+    cModel.cartProductQty = int.parse(cartProductQty);
+    cModel.cartUserId = int.parse(userId);
+
+/*    dbHelper = DbHelper();
+    await dbHelper.saveData(cModel).then((userData) {
+      alertDialog("Successfully Saved");
+
+      Navigator.push(context, MaterialPageRoute(builder: (_) => login()));
+    }).catchError((error) {
+      print(error);
+      alertDialog("Error: Data Save Fail--`$error");
+    });*/
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -117,7 +152,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         style: ElevatedButton.styleFrom(
                           primary: AppColor.colorPrimary,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Cart();
+                        },
                         child: Text(AppString.textAddtoCart,
                             style: getTextStyle(
                                 AppFonts.regular, AppSize.textSize16)),
