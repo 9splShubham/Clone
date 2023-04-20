@@ -20,7 +20,10 @@ import '../dashboard/category.dart';
 import 'product_screen.dart';
 
 class BottomSheetProduct extends StatefulWidget {
-  const BottomSheetProduct({Key? key}) : super(key: key);
+  final Function onProductAdd;
+
+  const BottomSheetProduct({Key? key, required this.onProductAdd})
+      : super(key: key);
 
   @override
   State<BottomSheetProduct> createState() => _BottomSheetProduct();
@@ -89,10 +92,11 @@ class _BottomSheetProduct extends State<BottomSheetProduct> {
       pModel.userId = sp.getInt(AppConfig.textUserId);
 
       dbHelper = DbHelper();
-      await dbHelper.saveProduct(pModel).then((userData) {
-        alertDialog("Successfully Saved");
-
-        Navigator.push(context, MaterialPageRoute(builder: (_) => Vendor()));
+      await dbHelper.saveProduct(pModel).then((productData) {
+        widget.onProductAdd();
+      }).catchError((error) {
+        print(error);
+        alertDialog("Error: Data Save Fail--$error");
       });
     }
   }
@@ -182,6 +186,7 @@ class _BottomSheetProduct extends State<BottomSheetProduct> {
                 ),
                 TextFormField(
                   controller: productImageController,
+                  keyboardType: TextInputType.multiline,
                   decoration: InputDecoration(
                       hintText: AppString.textEnterproductimage,
                       focusedBorder: UnderlineInputBorder(

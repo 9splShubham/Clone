@@ -103,6 +103,33 @@ class DbHelper {
     return res;
   }
 
+  Future<List<ProductModel>> getUserProduct(int userId) async {
+    var dbClient = await db;
+    var res = await dbClient.rawQuery("SELECT * FROM $Table_Product WHERE "
+        "$Product_User_Id = $userId ");
+    try {
+      List<ProductModel> mProductModel = List<ProductModel>.from(
+          res.map((model) => ProductModel.fromJson(model)));
+
+      return mProductModel;
+    } catch (e) {
+      return [];
+    }
+  }
+
+  Future<List<ProductModel>> getCategoryProduct(int categoryId) async {
+    var dbClient = await db;
+    var res = await dbClient.rawQuery("SELECT * FROM $Table_Product WHERE "
+        "$Product_Category = $categoryId ");
+    try {
+      List<ProductModel> mProductModel = List<ProductModel>.from(
+          res.map((model) => ProductModel.fromJson(model)));
+      return mProductModel;
+    } catch (e) {
+      return [];
+    }
+  }
+
 /*  Future<int> saveCart(ProductModel product) async {
     var dbClient = await db;
     var res = await dbClient.insert(Table_Cart, product.toJson());
