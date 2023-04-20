@@ -24,6 +24,7 @@ class BottomSheetPaymentSelect extends StatefulWidget {
 
 class _BottomSheetPaymentSelectState extends State<BottomSheetPaymentSelect> {
   int x = 1;
+  var dbHelper;
 
   @override
   void initState() {

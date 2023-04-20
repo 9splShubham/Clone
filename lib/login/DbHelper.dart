@@ -1,3 +1,5 @@
+import 'package:clone/Add_to_cart/Cart%20Content.dart';
+import 'package:clone/vendor/cart_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -89,6 +91,14 @@ class DbHelper {
         " $Cart_Product_Qty INTEGER,"
         " $Cart_User_Id INTEGER"
         ")");
+
+/*    await db.execute("CREATE TABLE $Table_Order ("
+        " $Order_ID INTEGER PRIMARY KEY,"
+        " $Order_Qty INTEGER,"
+        " $Order_Product_Id INTEGER,"
+        " $Order_User_Id INTEGER,"
+        " $Order_Status INTEGER"
+        ")");*/
   }
 
   Future<int> saveData(UserModel user) async {
@@ -100,6 +110,12 @@ class DbHelper {
   Future<int> saveProduct(ProductModel product) async {
     var dbClient = await db;
     var res = await dbClient.insert(Table_Product, product.toJson());
+    return res;
+  }
+
+  Future<int> saveCart(CartModel cart) async {
+    var dbClient = await db;
+    var res = await dbClient.insert(Table_Cart, cart.toJson());
     return res;
   }
 
@@ -130,11 +146,20 @@ class DbHelper {
     }
   }
 
-/*  Future<int> saveCart(ProductModel product) async {
+  Future<List<ModelCartProduct>> getUserCart(int userId) async {
     var dbClient = await db;
-    var res = await dbClient.insert(Table_Cart, product.toJson());
-    return res;
-  }*/
+    var res = await dbClient.rawQuery(
+        "SELECT * FROM $Table_Cart INNER JOIN $Table_Product on $Table_Product.$Product_Id=$Table_Cart.$Cart_Product_Id WHERE $Cart_User_Id = $userId");
+
+    try {
+      List<ModelCartProduct> mCartModel = List<ModelCartProduct>.from(
+          res.map((model) => ModelCartProduct.fromJson(model)));
+
+      return mCartModel;
+    } catch (e) {
+      return [];
+    }
+  }
 
   Future<UserModel> getLoginUser(String email, String password) async {
     var dbClient = await db;
@@ -192,6 +217,25 @@ class DbHelper {
     }
     return UserModel();
   }*/
+
+  Future<CartModel> getCartProduct(int productId, int userId) async {
+    var dbClient = await db;
+    var res = await dbClient.rawQuery("SELECT * FROM $Table_Cart WHERE "
+        "$Cart_Product_Id = $productId AND "
+        "$Cart_User_Id = $userId");
+
+    if (res.length > 0) {
+      return CartModel.fromJson(res.first);
+    }
+    return CartModel();
+  }
+
+  ///RemoveFromCart
+  Future<int> deleteCategory(int id) async {
+    var dbClient = await db;
+    return await dbClient
+        .rawDelete('DELETE FROM $Table_Cart WHERE $Cart_ID = ?', [id]);
+  }
 
   Future<int> updateUser(UserModel user) async {
     var dbClient = await db;

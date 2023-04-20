@@ -1,3 +1,4 @@
+import 'package:clone/Product_details/product_details.dart';
 import 'package:clone/core/app_color.dart';
 import 'package:clone/core/app_fonts.dart';
 import 'package:clone/core/app_image.dart';
@@ -110,49 +111,62 @@ class PopularProductsState extends State<PopularProductsScreen> {
                         return Card(
                           child: Container(
                               height: 240,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    height: 100,
-                                    child: Image.network(
-                                      item.productImage!,
-                                      fit: BoxFit.cover,
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ProductDetails(
+                                        mProductModel: item,
+                                        onProductAddToCart: () {},
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(3),
-                                    child: Wrap(
-                                      children: [
-                                        Text(
-                                          item.productName!,
-                                          style: getTextStyle(
-                                              AppFonts.regularBlack2,
-                                              AppSize.textSize14),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "\$${item.productPrice!}",
-                                              style: getTextStyle(
-                                                  AppFonts.regularGreen,
-                                                  AppSize.textSize14),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                  );
+                                },
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: 100,
+                                      child: Image.network(
+                                        item.productImage!,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                  ),
-                                  // Align(
-                                  //   alignment: Alignment.topLeft,
-                                  //   child:
-                                  // ),
-                                ],
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(3),
+                                      child: Wrap(
+                                        children: [
+                                          Text(
+                                            item.productName!,
+                                            style: getTextStyle(
+                                                AppFonts.regularBlack2,
+                                                AppSize.textSize14),
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "\$${item.productPrice!}",
+                                                style: getTextStyle(
+                                                    AppFonts.regularGreen,
+                                                    AppSize.textSize14),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    // Align(
+                                    //   alignment: Alignment.topLeft,
+                                    //   child:
+                                    // ),
+                                  ],
+                                ),
                               )),
                         );
                       }),

@@ -200,6 +200,7 @@ class _BottomSheetProduct extends State<BottomSheetProduct> {
                 ),
                 TextFormField(
                   controller: productDescriptionController,
+                  keyboardType: TextInputType.multiline,
                   decoration: InputDecoration(
                       hintText: AppString.textEnterDesc,
                       focusedBorder: UnderlineInputBorder(

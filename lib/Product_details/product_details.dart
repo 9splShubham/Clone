@@ -1,4 +1,5 @@
 import 'package:clone/core/app_color.dart';
+import 'package:clone/core/app_config.dart';
 import 'package:clone/core/app_fonts.dart';
 import 'package:clone/core/app_image.dart';
 import 'package:clone/core/app_size.dart';
@@ -10,11 +11,14 @@ import 'package:clone/login/product_model.dart';
 import 'package:clone/otp_verification/otp_verification.dart';
 import 'package:clone/vendor/cart_model.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProductDetails extends StatefulWidget {
   final ProductModel mProductModel;
+  final Function onProductAddToCart;
 
-  const ProductDetails({Key? key, required this.mProductModel})
+  const ProductDetails(
+      {Key? key, required this.mProductModel, required this.onProductAddToCart})
       : super(key: key);
 
   @override
@@ -23,35 +27,77 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   var dbHelper;
+  CartModel mCartModel = CartModel();
 
   @override
   void initState() {
+    initData();
+    initNewData();
     super.initState();
-    dbHelper = DbHelper();
   }
 
-  Cart() async {
-    String cartId = '';
-    String cartProductId = '';
-    String cartProductQty = '';
-    String userId = '';
+  void initData() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    dbHelper = DbHelper();
+    await dbHelper
+        .getCartProduct(
+            widget.mProductModel.productId, sp.getInt(AppConfig.textUserId))
+        .then((cartData) {
+      if (cartData != null && cartData.cartId != null) {
+        setState(() {
+          mCartModel = cartData;
+        });
+      } else {
+        setState(() {
+          mCartModel = CartModel();
+        });
+      }
+    });
+  }
+
+  void initNewData() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    dbHelper = DbHelper();
+    mCartModel = await dbHelper.getUserProduct(sp.getInt(AppConfig.textUserId));
+    setState(() {});
+  }
+
+  int selectQty = 0;
+
+  removeFromCart() async {
+    dbHelper = DbHelper();
+    await dbHelper.deleteCategory(mCartModel.cartId);
+    initData();
+  }
+
+  addToCart() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
 
     CartModel cModel = CartModel();
 
-    cModel.cartId = int.parse(cartId);
-    cModel.cartProductId = int.parse(cartProductId);
-    cModel.cartProductQty = int.parse(cartProductQty);
-    cModel.cartUserId = int.parse(userId);
+    cModel.cartProductId = widget.mProductModel.productId;
+    cModel.cartProductQty = selectQty;
+    cModel.cartUserId = sp.getInt(AppConfig.textUserId);
 
-/*    dbHelper = DbHelper();
-    await dbHelper.saveData(cModel).then((userData) {
-      alertDialog("Successfully Saved");
-
-      Navigator.push(context, MaterialPageRoute(builder: (_) => login()));
+    if (selectQty != 0) {
+      dbHelper = DbHelper();
+      await dbHelper.saveCart(cModel).then((cartData) {
+        alertDialog("Successfully Added");
+      }).catchError((error) {
+        print(error);
+        alertDialog("Error: Data Save Fail--$error");
+      });
+      initData();
+    } else {
+      alertDialog("Please Select Qty");
+    }
+    dbHelper = DbHelper();
+    await dbHelper.saveProduct(cModel).then((productData) {
+      widget.onProductAddToCart();
     }).catchError((error) {
       print(error);
-      alertDialog("Error: Data Save Fail--`$error");
-    });*/
+      alertDialog("Error: Data Save Fail--$error");
+    });
   }
 
   @override
@@ -95,14 +141,14 @@ class _ProductDetailsState extends State<ProductDetails> {
             const SizedBox(
               height: 5,
             ),
-            Row(
+            /*        Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(height: 50, child: Image.asset(AppImage.p1)),
                 Container(height: 50, child: Image.asset(AppImage.p2)),
                 Container(height: 50, child: Image.asset(AppImage.p3)),
               ],
-            ),
+            ),*/
             const SizedBox(
               height: 30,
             ),
@@ -147,9 +193,17 @@ class _ProductDetailsState extends State<ProductDetails> {
                             primary: AppColor.colorPrimary,
                           ),
                           onPressed: () {
-                            Cart();
+                            initNewData();
+                            if (mCartModel.cartId != null) {
+                              removeFromCart();
+                            } else {
+                              addToCart();
+                            }
                           },
-                          child: Text(AppString.textAddtoCart,
+                          child: Text(
+                              mCartModel.cartId != null
+                                  ? 'Remove From Cart'
+                                  : AppString.textAddtoCart,
                               style: getTextStyle(
                                   AppFonts.regular, AppSize.textSize16)),
                         ),
@@ -159,67 +213,83 @@ class _ProductDetailsState extends State<ProductDetails> {
                   const SizedBox(
                     height: 40,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppString.textSelectQty,
-                        style: getTextStyle(
-                            AppFonts.regularBlack, AppSize.textSize16),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        height: 40,
-                        width: 110,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: AppColor.colorgrey),
-                          borderRadius: BorderRadius.circular(5),
+                  if (mCartModel.cartId == null)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppString.textSelectQty,
+                          style: getTextStyle(
+                              AppFonts.regularBlack, AppSize.textSize16),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            InkWell(
-                                onTap: () {},
-                                child: Image.asset(
-                                  AppImage.minus,
-                                  height: 10,
-                                  width: 10,
-                                )),
-                            const VerticalDivider(
-                              color: AppColor.colorgrey,
-                              thickness: 1,
-                            ),
-                            Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 3),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 3, vertical: 2),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(3),
-                                  color: Colors.white),
-                              child: Text(
-                                '5',
-                                style: getTextStyle(
-                                    AppFonts.regularBlack, AppSize.textSize20),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: AppColor.colorgrey),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              if (selectQty != 0)
+                                InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selectQty--;
+                                      });
+                                    },
+                                    child: Image.asset(
+                                      AppImage.minus,
+                                      height: 10,
+                                      width: 10,
+                                    )),
+                              if (selectQty != 0)
+                                const VerticalDivider(
+                                  color: AppColor.colorgrey,
+                                  thickness: 1,
+                                ),
+                              Container(
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 3),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 3, vertical: 2),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(3),
+                                    color: Colors.white),
+                                child: Text(
+                                  selectQty.toString(),
+                                  style: getTextStyle(AppFonts.regularBlack,
+                                      AppSize.textSize20),
+                                ),
                               ),
-                            ),
-                            const VerticalDivider(
-                              color: AppColor.colorgrey,
-                              thickness: 1,
-                            ),
-                            InkWell(
-                                onTap: () {},
-                                child: Image.asset(
-                                  AppImage.plus,
-                                  height: 10,
-                                  width: 10,
-                                )),
-                          ],
+                              if (selectQty !=
+                                  widget.mProductModel.productQuantity!)
+                                const VerticalDivider(
+                                  color: AppColor.colorgrey,
+                                  thickness: 1,
+                                ),
+                              if (selectQty !=
+                                  widget.mProductModel.productQuantity!)
+                                InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selectQty++;
+                                      });
+                                    },
+                                    child: Image.asset(
+                                      AppImage.plus,
+                                      height: 10,
+                                      width: 10,
+                                    )),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
                   const SizedBox(
                     height: 20,
                   ),

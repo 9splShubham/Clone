@@ -469,32 +469,43 @@ class _dashboardState extends State<_dashboard> {
                         scrollDirection: Axis.horizontal,
                         itemCount: _category.length,
                         itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 10, left: 10),
-                            child: Row(
-                              children: [
-                                Column(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(5),
-                                      child: Image.network(
-                                        _category[index].image!,
-                                        height: 80,
-                                        width: 80,
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          PopularProductsScreen(
+                                              mCategory: _category[index])));
+                            },
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(right: 10, left: 10),
+                              child: Row(
+                                children: [
+                                  Column(
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(5),
+                                        child: Image.network(
+                                          _category[index].image!,
+                                          height: 80,
+                                          width: 80,
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      _category[index].name!,
-                                      style: getTextStyle(
-                                          AppFonts.regularBlack2,
-                                          AppSize.textSize14),
-                                    )
-                                  ],
-                                ),
-                              ],
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        _category[index].name!,
+                                        style: getTextStyle(
+                                            AppFonts.regularBlack2,
+                                            AppSize.textSize14),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         }),
@@ -538,17 +549,7 @@ class _dashboardState extends State<_dashboard> {
                                           items()[index].image!,
                                           fit: BoxFit.cover,
                                         ),
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ProductDetails(
-                                                      mProductModel:
-                                                          ProductModel(),
-                                                    )),
-                                          );
-                                        },
+                                        onTap: () {},
                                       ),
                                     ),
                                     const SizedBox(

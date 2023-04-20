@@ -97,9 +97,6 @@ class _Product extends State<Product> {
                                     ),
                                     Row(
                                       children: [
-                                        SizedBox(
-                                          width: 10,
-                                        ),
                                         Text(
                                           AppString.textQuantity,
                                           style: getTextStyle(
