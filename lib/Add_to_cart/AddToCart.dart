@@ -7,10 +7,13 @@ import 'package:clone/core/app_size.dart';
 import 'package:clone/core/app_string.dart';
 import 'package:clone/dashboard/dashboard.dart';
 import 'package:clone/login/DbHelper.dart';
+import 'package:clone/login/com_helper.dart';
 import 'package:clone/login/product_model.dart';
 import 'package:clone/place_order/place_order.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'row_cart.dart';
 
 class AddToCart extends StatefulWidget {
   const AddToCart({Key? key}) : super(key: key);
@@ -21,6 +24,8 @@ class AddToCart extends StatefulWidget {
 
 class _AddToCartState extends State<AddToCart> {
   var dbHelper;
+  ModelCartProduct mCartModelData = ModelCartProduct();
+
   List<ModelCartProduct> mCartModel = [];
 
   @override
@@ -49,6 +54,30 @@ class _AddToCartState extends State<AddToCart> {
     });
   }
 
+  int selectQty = 0;
+
+  removeFromCart(int index) async {
+    dbHelper = DbHelper();
+    await dbHelper.deleteCart(mCartModel[index].cartId);
+    initData();
+  }
+
+  addToCart(int index, bool isIncrease) async {
+    int selectQty = mCartModel[index].cartProductQty!;
+    dbHelper = DbHelper();
+    await dbHelper
+        .updateCart(isIncrease ? selectQty + 1 : selectQty - 1,
+            mCartModel[index].cartId)
+        .then((cartData) {
+      alertDialog("Successfully Modified Cart");
+      initData();
+    }).catchError((error) {
+      print(error);
+      alertDialog("Error: Data Save Fail--$error");
+    });
+    initData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,133 +102,11 @@ class _AddToCartState extends State<AddToCart> {
                     scrollDirection: Axis.vertical,
                     itemCount: mCartModel.length,
                     itemBuilder: (context, index) {
-                      ModelCartProduct item = mCartModel[index];
-                      print("------>${item.productImage}");
-                      return Card(
-                        child: Container(
-                          height: 120,
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Image.network(
-                                      item.productImage!,
-                                      height: 90,
-                                      width: 90,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        item.productName!.toString(),
-                                        style: getTextStyle(
-                                            AppFonts.regularBlack2,
-                                            AppSize.textSize14),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        "\$${item.productPrice!.toString()}",
-                                        style: getTextStyle(
-                                            AppFonts.regularGreen,
-                                            AppSize.textSize18),
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            width: 30,
-                                          ),
-                                          Container(
-                                            height: 40,
-                                            width: 110,
-                                            decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: AppColor.colorgrey),
-                                              borderRadius:
-                                                  BorderRadius.circular(5),
-                                            ),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                InkWell(
-                                                    onTap: () {},
-                                                    child: Image.asset(
-                                                      AppImage.minus,
-                                                      height: 10,
-                                                      width: 10,
-                                                    )),
-                                                VerticalDivider(
-                                                  color: AppColor.colorgrey,
-                                                  thickness: 1,
-                                                ),
-                                                Container(
-                                                  margin: EdgeInsets.symmetric(
-                                                      horizontal: 3),
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 3,
-                                                      vertical: 2),
-                                                  decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              3),
-                                                      color: Colors.white),
-                                                  child: Text(
-                                                    '3',
-                                                    style: getTextStyle(
-                                                        AppFonts.regularBlack,
-                                                        AppSize.textSize20),
-                                                  ),
-                                                ),
-                                                VerticalDivider(
-                                                  color: AppColor.colorgrey,
-                                                  thickness: 1,
-                                                ),
-                                                InkWell(
-                                                    onTap: () {},
-                                                    child: Image.asset(
-                                                      AppImage.plus,
-                                                      height: 10,
-                                                      width: 10,
-                                                    )),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 50,
-                                          ),
-                                          CircleAvatar(
-                                            radius: 15,
-                                            backgroundColor: Colors.red,
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(
-                                                  6), // Border radius
-                                              child: ClipOval(
-                                                  child: Image.asset(
-                                                AppImage.delete,
-                                              )),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
+                      return RowCart(
+                        item: mCartModel[index],
+                        onDecrease: () => addToCart(index, false),
+                        onIncrease: () => addToCart(index, true),
+                        onDelete: () => removeFromCart(index),
                       );
                     }),
               ),
@@ -266,6 +173,9 @@ class _AddToCartState extends State<AddToCart> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 50,
+              )
             ],
           ),
         ),

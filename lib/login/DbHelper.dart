@@ -40,7 +40,7 @@ class DbHelper {
   static const String Cart_Product_Qty = 'cartProductQty';
   static const String Cart_User_Id = 'cartUserId';
 
-/*  static const String Table_Order = 'order';
+/*  static const String Table_Order = 'user_order';
   static const String Order_ID = 'orderId';
   static const String Order_Qty = 'orderQty';
   static const String Order_Product_Id = 'orderProductId';
@@ -218,6 +218,19 @@ class DbHelper {
     return UserModel();
   }*/
 
+  ///UpdateCart
+  Future<List<CartModel>> updateCart(int qty, int cartId) async {
+    var dbClient = await db;
+    String q =
+        'UPDATE $Table_Cart SET $Cart_Product_Qty = $qty WHERE $Cart_ID = $cartId';
+    print('object---->${q}');
+    var value = await dbClient.rawQuery(q);
+    print('object--value-->$value');
+    List<CartModel> mModelCategory =
+        List<CartModel>.from(value.map((model) => CartModel.fromJson(model)));
+    return mModelCategory;
+  }
+
   Future<CartModel> getCartProduct(int productId, int userId) async {
     var dbClient = await db;
     var res = await dbClient.rawQuery("SELECT * FROM $Table_Cart WHERE "
@@ -231,7 +244,7 @@ class DbHelper {
   }
 
   ///RemoveFromCart
-  Future<int> deleteCategory(int id) async {
+  Future<int> deleteCart(int id) async {
     var dbClient = await db;
     return await dbClient
         .rawDelete('DELETE FROM $Table_Cart WHERE $Cart_ID = ?', [id]);

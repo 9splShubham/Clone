@@ -32,7 +32,7 @@ class ModelCartProduct {
   ModelCartProduct.fromJson(Map<String, dynamic> json) {
     cartId = json['cartId'];
     cartProductId = json['cartProductId'];
-    cartProductQty = json['productQty'];
+    cartProductQty = json['cartProductQty'];
     cartUserId = json['cartUserId'];
     productId = json['Product_id'];
     productName = json['Product_name'];

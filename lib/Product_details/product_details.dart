@@ -60,7 +60,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   removeFromCart() async {
     dbHelper = DbHelper();
-    await dbHelper.deleteCategory(mCartModel.cartId);
+    await dbHelper.deleteCart(mCartModel.cartId);
     initData();
   }
 
