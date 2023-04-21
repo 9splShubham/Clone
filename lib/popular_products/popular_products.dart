@@ -1,3 +1,4 @@
+import 'package:clone/Add_to_cart/AddToCart.dart';
 import 'package:clone/Product_details/product_details.dart';
 import 'package:clone/core/app_color.dart';
 import 'package:clone/core/app_fonts.dart';
@@ -83,7 +84,10 @@ class PopularProductsState extends State<PopularProductsScreen> {
                   AppImage.shop,
                   fit: BoxFit.fill,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AddToCart()));
+                },
               ),
             ],
           ),

@@ -7,6 +7,7 @@ import 'package:clone/core/app_size.dart';
 import 'package:clone/core/app_string.dart';
 import 'package:clone/dashboard/dashboard.dart';
 import 'package:clone/login/DbHelper.dart';
+import 'package:clone/login/product_model.dart';
 import 'package:clone/place_order/place_order.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,7 +43,7 @@ class _AddToCartState extends State<AddToCart> {
       } else {
         setState(() {
           mCartModel = [];
-          print("---------->");
+          print("---------->hello");
         });
       }
     });
@@ -70,12 +71,10 @@ class _AddToCartState extends State<AddToCart> {
               Expanded(
                 child: ListView.builder(
                     scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
                     itemCount: mCartModel.length,
                     itemBuilder: (context, index) {
                       ModelCartProduct item = mCartModel[index];
-                      print("------>info");
-
+                      print("------>${item.productImage}");
                       return Card(
                         child: Container(
                           height: 120,

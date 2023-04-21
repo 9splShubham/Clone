@@ -14,6 +14,7 @@ class ModelCartProduct {
   int? productPrice;
   int? productQty;
   int? productUserId;
+
   ModelCartProduct(
       {this.cartId,
       this.cartProductId,
@@ -33,14 +34,14 @@ class ModelCartProduct {
     cartProductId = json['cartProductId'];
     cartProductQty = json['productQty'];
     cartUserId = json['cartUserId'];
-    productId = json['productId'];
-    productName = json['productName'];
-    productCat = json['productCat'];
-    productImage = json['productImage'];
-    productDesc = json['productDesc'];
-    productPrice = json['productPrice'];
-    productQty = json['productQty'];
-    productUserId = json['productUserId'];
+    productId = json['Product_id'];
+    productName = json['Product_name'];
+    productCat = json['Product_category'];
+    productImage = json['Product_image'];
+    productDesc = json['Product_description'];
+    productPrice = json['Product_price'];
+    productQty = json['Product_quantity'];
+    productUserId = json['User_id'];
   }
 
   Map<String, dynamic> toJson() {

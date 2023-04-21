@@ -1,3 +1,4 @@
+import 'package:clone/Add_to_cart/AddToCart.dart';
 import 'package:clone/core/app_color.dart';
 import 'package:clone/core/app_config.dart';
 import 'package:clone/core/app_fonts.dart';
@@ -32,7 +33,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   @override
   void initState() {
     initData();
-    initNewData();
+
     super.initState();
   }
 
@@ -53,13 +54,6 @@ class _ProductDetailsState extends State<ProductDetails> {
         });
       }
     });
-  }
-
-  void initNewData() async {
-    SharedPreferences sp = await SharedPreferences.getInstance();
-    dbHelper = DbHelper();
-    mCartModel = await dbHelper.getUserProduct(sp.getInt(AppConfig.textUserId));
-    setState(() {});
   }
 
   int selectQty = 0;
@@ -120,7 +114,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                 AppImage.shop,
                 fit: BoxFit.fill,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => AddToCart()));
+              },
             ),
           ],
         ),
@@ -193,7 +190,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             primary: AppColor.colorPrimary,
                           ),
                           onPressed: () {
-                            initNewData();
+                            initData();
                             if (mCartModel.cartId != null) {
                               removeFromCart();
                             } else {

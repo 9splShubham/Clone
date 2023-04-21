@@ -160,6 +160,7 @@ class _BottomSheetProduct extends State<BottomSheetProduct> {
                 ),
                 TextFormField(
                   controller: productPriceController,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                       hintText: AppString.textEnterproductprice,
                       focusedBorder: UnderlineInputBorder(
@@ -173,6 +174,7 @@ class _BottomSheetProduct extends State<BottomSheetProduct> {
                 ),
                 TextFormField(
                   controller: productQuantityController,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                       hintText: AppString.textEnterQuantity,
                       focusedBorder: UnderlineInputBorder(
