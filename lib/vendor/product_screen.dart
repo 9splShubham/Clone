@@ -42,8 +42,8 @@ class _Product extends State<Product> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
+    return SingleChildScrollView(
+      child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Expanded(
           child: Column(
@@ -51,102 +51,110 @@ class _Product extends State<Product> {
               SizedBox(
                 height: 20,
               ),
-              ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  itemCount: mProductModel.length,
-                  itemBuilder: (context, index) {
-                    ProductModel item = mProductModel[index];
-                    return Card(
-                      child: Container(
-                        height: 120,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.network(
-                                    item.productImage!,
-                                    height: 90,
-                                    width: 90,
+              SizedBox(
+                height: 550,
+                child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: mProductModel.length,
+                    itemBuilder: (context, index) {
+                      ProductModel item = mProductModel[index];
+                      return Card(
+                        child: Container(
+                          height: 120,
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image.network(
+                                      item.productImage!,
+                                      height: 90,
+                                      width: 90,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      item.productName!,
-                                      style: getTextStyle(
-                                          AppFonts.regularBlack2,
-                                          AppSize.textSize14),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      "\$${item.productPrice!}",
-                                      style: getTextStyle(AppFonts.regularGreen,
-                                          AppSize.textSize18),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          AppString.textQuantity,
-                                          style: getTextStyle(
-                                              AppFonts.regularGrey,
-                                              AppSize.textSize14),
-                                        ),
-                                        SizedBox(
-                                          width: 30,
-                                        ),
-                                        InkWell(
-                                          child: Text(
-                                            AppString.textEdit,
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        item.productName!,
+                                        style: getTextStyle(
+                                            AppFonts.regularBlack2,
+                                            AppSize.textSize14),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        "\$${item.productPrice!}",
+                                        style: getTextStyle(
+                                            AppFonts.regularGreen,
+                                            AppSize.textSize18),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            AppString.textQuantity,
                                             style: getTextStyle(
                                                 AppFonts.regularGrey,
                                                 AppSize.textSize14),
                                           ),
-                                          onTap: () {},
-                                        ),
-                                        SizedBox(
-                                          width: 50,
-                                        ),
-                                        InkWell(
-                                          child: CircleAvatar(
-                                            radius: 15,
-                                            backgroundColor: Colors.red,
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(
-                                                  6), // Border radius
-                                              child: ClipOval(
-                                                  child: Image.asset(
-                                                AppImage.delete,
-                                              )),
-                                            ),
+                                          SizedBox(
+                                            width: 30,
                                           ),
-                                          onTap: () {
-                                            alertDialog(
-                                                "Are you sure you want to delete the item?");
-                                          },
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
+                                          InkWell(
+                                            child: Text(
+                                              AppString.textEdit,
+                                              style: getTextStyle(
+                                                  AppFonts.regularGrey,
+                                                  AppSize.textSize14),
+                                            ),
+                                            onTap: () {},
+                                          ),
+                                          SizedBox(
+                                            width: 50,
+                                          ),
+                                          InkWell(
+                                            child: CircleAvatar(
+                                              radius: 15,
+                                              backgroundColor: Colors.red,
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(
+                                                    6), // Border radius
+                                                child: ClipOval(
+                                                    child: Image.asset(
+                                                  AppImage.delete,
+                                                )),
+                                              ),
+                                            ),
+                                            onTap: () {
+                                              alertDialog(
+                                                  "Are you sure you want to delete the item?");
+                                            },
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  }),
+                      );
+                    }),
+              ),
+              SizedBox(
+                height: 10,
+              ),
               Align(
                 alignment: Alignment.bottomRight,
                 child: ElevatedButton(
