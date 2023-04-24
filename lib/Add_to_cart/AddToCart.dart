@@ -27,7 +27,7 @@ class _AddToCartState extends State<AddToCart> {
   ModelCartProduct mCartModelData = ModelCartProduct();
 
   List<ModelCartProduct> mCartModel = [];
-
+int totalCartAmount=0;
   @override
   void initState() {
     initData();
@@ -37,21 +37,28 @@ class _AddToCartState extends State<AddToCart> {
   void initData() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     dbHelper = DbHelper();
+
     await dbHelper
         .getUserCart(sp.getInt(AppConfig.textUserId))
         .then((List<ModelCartProduct> cartData) {
       if (cartData.isNotEmpty) {
         setState(() {
+          totalCartAmount=0;
           mCartModel = cartData;
-          print("----------Hiiiii>");
+          for (int i=0;i<mCartModel.length;i++){
+            int cartPrice = (mCartModel[i].productPrice!*mCartModel[i].cartProductQty!);
+            totalCartAmount=totalCartAmount+cartPrice;
+          }
         });
       } else {
         setState(() {
           mCartModel = [];
-          print("---------->hello");
+          totalCartAmount=0;
+
         });
       }
     });
+
   }
 
   int selectQty = 0;
@@ -122,7 +129,7 @@ class _AddToCartState extends State<AddToCart> {
                         getTextStyle(AppFonts.regularBlack, AppSize.textSize14),
                   ),
                   Text(
-                    AppString.text60,
+                    '\$ ${totalCartAmount.toString()}',
                     style:
                         getTextStyle(AppFonts.regularGreen, AppSize.textSize14),
                   )

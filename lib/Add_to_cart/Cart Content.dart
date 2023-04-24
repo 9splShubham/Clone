@@ -109,3 +109,35 @@ List<Category> cart() {
 
   return mList;
 }
+class OrderModel {
+  String? orderID;
+  String? orderQty;
+  String? orderProductId;
+  String? orderUserId;
+  String? orderStatus;
+
+  OrderModel(
+      {this.orderID,
+        this.orderQty,
+        this.orderProductId,
+        this.orderUserId,
+        this.orderStatus});
+
+  OrderModel.fromJson(Map<String, dynamic> json) {
+    orderID = json['Order_ID'];
+    orderQty = json['Order_Qty'];
+    orderProductId = json['Order_Product_Id'];
+    orderUserId = json['Order_User_Id'];
+    orderStatus = json['Order_Status'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['Order_ID'] = this.orderID;
+    data['Order_Qty'] = this.orderQty;
+    data['Order_Product_Id'] = this.orderProductId;
+    data['Order_User_Id'] = this.orderUserId;
+    data['Order_Status'] = this.orderStatus;
+    return data;
+  }
+}

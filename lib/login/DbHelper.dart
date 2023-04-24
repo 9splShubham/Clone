@@ -40,12 +40,12 @@ class DbHelper {
   static const String Cart_Product_Qty = 'cartProductQty';
   static const String Cart_User_Id = 'cartUserId';
 
-/*  static const String Table_Order = 'user_order';
+  static const String Table_Order = 'user_order';
   static const String Order_ID = 'orderId';
   static const String Order_Qty = 'orderQty';
   static const String Order_Product_Id = 'orderProductId';
   static const String Order_User_Id = 'orderUserId';
-  static const String Order_Status = 'orderStatus';*/
+  static const String Order_Status = 'orderStatus';
 
   Future<Database> get db async {
     /* if (_db != null) {
@@ -92,13 +92,13 @@ class DbHelper {
         " $Cart_User_Id INTEGER"
         ")");
 
-/*    await db.execute("CREATE TABLE $Table_Order ("
+    await db.execute("CREATE TABLE $Table_Order ("
         " $Order_ID INTEGER PRIMARY KEY,"
         " $Order_Qty INTEGER,"
         " $Order_Product_Id INTEGER,"
         " $Order_User_Id INTEGER,"
         " $Order_Status INTEGER"
-        ")");*/
+        ")");
   }
 
   Future<int> saveData(UserModel user) async {
@@ -116,6 +116,14 @@ class DbHelper {
   Future<int> saveCart(CartModel cart) async {
     var dbClient = await db;
     var res = await dbClient.insert(Table_Cart, cart.toJson());
+    return res;
+  }
+
+
+
+  Future<int> saveOrder(OrderModel order) async {
+    var dbClient = await db;
+    var res = await dbClient.insert(Table_Order, order.toJson());
     return res;
   }
 
