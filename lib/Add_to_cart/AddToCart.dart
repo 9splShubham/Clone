@@ -8,6 +8,7 @@ import 'package:clone/core/app_string.dart';
 import 'package:clone/dashboard/dashboard.dart';
 import 'package:clone/login/DbHelper.dart';
 import 'package:clone/login/com_helper.dart';
+import 'package:clone/login/navigator_key.dart';
 import 'package:clone/login/product_model.dart';
 import 'package:clone/place_order/place_order.dart';
 import 'package:flutter/material.dart';
@@ -60,6 +61,37 @@ int totalCartAmount=0;
     });
 
   }
+  void initDataOrder() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    dbHelper = DbHelper();
+
+    for (int i = 0; i < mCartModel.length; i++) {
+      ModelCartProduct item = mCartModel[i];
+
+      OrderModel oModel = OrderModel();
+      oModel.orderProductId =item.productId;
+      oModel.orderQty = item.cartProductQty;
+      oModel.orderUserId = sp.getInt(AppConfig.textUserId);
+      oModel.orderStatus = 0;
+
+      int remainingQty = item.productQty! - item.cartProductQty!;
+      await dbHelper.saveOrder(oModel).then((orderData) async {
+        await dbHelper
+            .updateCartProduct(remainingQty, item.productId)
+            .then((ss) async {
+          await dbHelper.deleteCart(item.cartId);
+        });
+      });
+    }
+    alertDialog("Order Placed Successfully");
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.pushAndRemoveUntil(
+          NavigatorKey.navigatorKey.currentContext!,
+          MaterialPageRoute(builder: (_) => const Dashboard()),
+              (Route<dynamic> route) => false);
+    });
+  }
+
 
   int selectQty = 0;
 
@@ -170,11 +202,12 @@ int totalCartAmount=0;
                         primary: AppColor.colorPrimary,
                       ),
                       onPressed: () {
-                        Navigator.push(
+                        initDataOrder();
+                 /*       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => const PlaceOrder()),
-                        );
+                        );*/
                       },
                     ),
                   ),

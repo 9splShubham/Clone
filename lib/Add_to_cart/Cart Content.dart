@@ -110,11 +110,11 @@ List<Category> cart() {
   return mList;
 }
 class OrderModel {
-  String? orderID;
-  String? orderQty;
-  String? orderProductId;
-  String? orderUserId;
-  String? orderStatus;
+  int? orderID;
+  int? orderQty;
+  int? orderProductId;
+  int? orderUserId;
+  int? orderStatus;
 
   OrderModel(
       {this.orderID,
@@ -124,20 +124,20 @@ class OrderModel {
         this.orderStatus});
 
   OrderModel.fromJson(Map<String, dynamic> json) {
-    orderID = json['Order_ID'];
-    orderQty = json['Order_Qty'];
-    orderProductId = json['Order_Product_Id'];
-    orderUserId = json['Order_User_Id'];
-    orderStatus = json['Order_Status'];
+    orderID = json['orderID'];
+    orderQty = json['orderQty'];
+    orderProductId = json['orderProductId'];
+    orderUserId = json['orderUserId'];
+    orderStatus = json['orderStatus'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Order_ID'] = this.orderID;
-    data['Order_Qty'] = this.orderQty;
-    data['Order_Product_Id'] = this.orderProductId;
-    data['Order_User_Id'] = this.orderUserId;
-    data['Order_Status'] = this.orderStatus;
+    data['orderID'] = this.orderID;
+    data['orderQty'] = this.orderQty;
+    data['orderProductId'] = this.orderProductId;
+    data['orderUserId'] = this.orderUserId;
+    data['orderStatus'] = this.orderStatus;
     return data;
   }
 }

@@ -238,6 +238,15 @@ class DbHelper {
         List<CartModel>.from(value.map((model) => CartModel.fromJson(model)));
     return mModelCategory;
   }
+  Future<dynamic> updateCartProduct(int qty, int productId) async {
+    var dbClient = await db;
+    String q =
+        'UPDATE $Table_Product SET $Product_Qty = $qty WHERE $Product_Id = $productId';
+
+    var value = await dbClient.rawQuery(q);
+    return value;
+  }
+
 
   Future<CartModel> getCartProduct(int productId, int userId) async {
     var dbClient = await db;
