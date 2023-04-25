@@ -81,8 +81,8 @@ class RowCart extends StatelessWidget {
                                     },
                                     child: Image.asset(
                                       AppImage.minus,
-                                      height: 10,
-                                      width: 10,
+                                      height: 20,
+                                      width: 20,
                                     )),
                               if (item.cartProductQty != 1)
                                 VerticalDivider(
@@ -114,8 +114,8 @@ class RowCart extends StatelessWidget {
                                     },
                                     child: Image.asset(
                                       AppImage.plus,
-                                      height: 10,
-                                      width: 10,
+                                      height: 20,
+                                      width: 20,
                                     )),
                             ],
                           ),

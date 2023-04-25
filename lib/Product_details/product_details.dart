@@ -241,8 +241,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     },
                                     child: Image.asset(
                                       AppImage.minus,
-                                      height: 10,
-                                      width: 10,
+                                      height: 20,
+                                      width: 20,
                                     )),
                               if (selectQty != 0)
                                 const VerticalDivider(
@@ -279,8 +279,8 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     },
                                     child: Image.asset(
                                       AppImage.plus,
-                                      height: 10,
-                                      width: 10,
+                                      height: 20,
+                                      width: 20,
                                     )),
                             ],
                           ),
@@ -299,7 +299,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     height: 10,
                   ),
                   Text(
-                   widget.mProductModel.productDescription!,
+                    widget.mProductModel.productDescription!,
                     style:
                         getTextStyle(AppFonts.regularGrey, AppSize.textSize16),
                   ),
