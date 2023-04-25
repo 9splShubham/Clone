@@ -1,6 +1,5 @@
 import 'package:clone/Add_to_cart/Cart%20Content.dart';
 import 'package:clone/vendor/cart_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'package:sqflite/sqflite.dart';
@@ -100,6 +99,7 @@ class DbHelper {
         " $Order_Status INTEGER"
         ")");
   }
+  //SAVE DATA
 
   Future<int> saveData(UserModel user) async {
     var dbClient = await db;
@@ -120,12 +120,16 @@ class DbHelper {
   }
 
 
-
   Future<int> saveOrder(OrderModel order) async {
     var dbClient = await db;
     var res = await dbClient.insert(Table_Order, order.toJson());
     return res;
   }
+
+
+
+
+  //GET
 
   Future<List<ProductModel>> getUserProduct(int userId) async {
     var dbClient = await db;
@@ -204,6 +208,7 @@ class DbHelper {
     return UserModel();
   }
 
+
 /*  Future<UserModel> printVendor() async {
     var dbClient = await db;
     var res = await dbClient
@@ -267,6 +272,15 @@ class DbHelper {
     return await dbClient
         .rawDelete('DELETE FROM $Table_Cart WHERE $Cart_ID = ?', [id]);
   }
+
+
+  Future<int> deleteProduct(int id) async {
+    var dbClient = await db;
+    return await dbClient
+        .rawDelete('DELETE FROM $Table_Product WHERE $Product_Id = ?', [id]);
+  }
+
+
 
   Future<int> updateUser(UserModel user) async {
     var dbClient = await db;

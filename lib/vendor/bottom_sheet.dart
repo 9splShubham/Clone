@@ -223,7 +223,7 @@ class _BottomSheetProduct extends State<BottomSheetProduct> {
                     ),
                     Container(
                       height: 50,
-                      width: 90,
+                      width: 100,
                       child: DropdownButton<Category>(
                         value: selectCategory,
                         isExpanded: true,
@@ -244,7 +244,9 @@ class _BottomSheetProduct extends State<BottomSheetProduct> {
                             .map<DropdownMenuItem<Category>>((Category value) {
                           return DropdownMenuItem<Category>(
                             value: value,
-                            child: Text(value.name!),
+                            child: Align(
+                                alignment: Alignment.center,
+                                child: Text(value.name!,)),
                           );
                         }).toList(),
                       ),

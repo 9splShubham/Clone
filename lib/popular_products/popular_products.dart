@@ -70,7 +70,7 @@ class PopularProductsState extends State<PopularProductsScreen> {
                 style: getTextStyle(AppFonts.regular, AppSize.textSize18),
               ),
               SizedBox(
-                width: 70,
+                width: 120,
               ),
               IconButton(
                 icon: Image.asset(
@@ -140,7 +140,7 @@ class PopularProductsState extends State<PopularProductsScreen> {
                                       height: 10,
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.all(3),
+                                      padding: const EdgeInsets.symmetric(horizontal: 20),
                                       child: Wrap(
                                         children: [
                                           Text(
@@ -150,7 +150,7 @@ class PopularProductsState extends State<PopularProductsScreen> {
                                                 AppSize.textSize14),
                                           ),
                                           SizedBox(
-                                            height: 10,
+                                            height: 20,
                                           ),
                                           Row(
                                             children: [

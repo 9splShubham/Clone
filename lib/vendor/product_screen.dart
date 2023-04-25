@@ -10,6 +10,7 @@ import 'package:clone/login/com_helper.dart';
 import 'package:clone/login/product_model.dart';
 import 'package:clone/place_order/place_order.dart';
 import 'package:clone/vendor/bottom_sheet.dart';
+import 'package:clone/vendor/row_product.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,6 +40,11 @@ class _Product extends State<Product> {
     print('object--mProductModel---${mProductModel.length}');
     setState(() {});
   }
+  removeFromProduct(int index) async {
+    dbHelper = DbHelper();
+    await dbHelper.deleteProduct(mProductModel[index].productId);
+    initData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,102 +65,11 @@ class _Product extends State<Product> {
                     itemCount: mProductModel.length,
                     itemBuilder: (context, index) {
                       ProductModel item = mProductModel[index];
-                      return Card(
-                        child: Container(
-                          height: 120,
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Image.network(
-                                      item.productImage!,
-                                      height: 90,
-                                      width: 90,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        item.productName!,
-                                        style: getTextStyle(
-                                            AppFonts.regularBlack2,
-                                            AppSize.textSize14),
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        "\$${item.productPrice!}",
-                                        style: getTextStyle(
-                                            AppFonts.regularGreen,
-                                            AppSize.textSize18),
-                                      ),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            AppString.textQuantity,
-                                            style: getTextStyle(
-                                                AppFonts.regularGrey,
-                                                AppSize.textSize14),
-                                          ),     Text(
-                                            item.productQuantity.toString(),
-                                            style: getTextStyle(
-                                                AppFonts.regularGrey,
-                                                AppSize.textSize14),
-                                          ),
-                                          SizedBox(
-                                            width: 30,
-                                          ),
-                                          InkWell(
-                                            child: Text(
-                                              AppString.textEdit,
-                                              style: getTextStyle(
-                                                  AppFonts.regularGrey,
-                                                  AppSize.textSize14),
-                                            ),
-                                            onTap: () {},
-                                          ),
-                                          SizedBox(
-                                            width: 50,
-                                          ),
-                                          InkWell(
-                                            child: CircleAvatar(
-                                              radius: 15,
-                                              backgroundColor: Colors.red,
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(
-                                                    6), // Border radius
-                                                child: ClipOval(
-                                                    child: Image.asset(
-                                                  AppImage.delete,
-                                                )),
-                                              ),
-                                            ),
-                                            onTap: () {
-                                              alertDialog(
-                                                  "Are you sure you want to delete the item?");
-                                            },
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
+                      return RowProduct(
+                        item: mProductModel[index],
+
+                        onDelete: () => removeFromProduct(index),);
+
                     }),
               ),
               SizedBox(

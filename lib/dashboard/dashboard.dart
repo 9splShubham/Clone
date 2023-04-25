@@ -264,7 +264,7 @@ class _DashboardState extends State<Dashboard> {
             title: Row(
               children: [
                 Text(
-                  AppString.textPharmacy,
+                  AppString.textGrocerry,
                   style: getTextStyle(AppFonts.regular, AppSize.textSize18),
                 ),
                 const SizedBox(

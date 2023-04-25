@@ -46,7 +46,7 @@ class AppString {
   static const textFamily = 'Family';
   static const textOther = 'Other';
   static const textSaveContinue = 'Save & Continue';
-  static const textPharmacy = 'Pharmacy';
+  static const textGrocerry = 'Grocerry';
   static const textDeals = 'Deals';
   static const textSearch = 'Search.....';
   static const textCategory = 'Category';
