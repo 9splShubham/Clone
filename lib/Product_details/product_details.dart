@@ -299,7 +299,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     height: 10,
                   ),
                   Text(
-                    AppString.textinfo,
+                   widget.mProductModel.productDescription!,
                     style:
                         getTextStyle(AppFonts.regularGrey, AppSize.textSize16),
                   ),

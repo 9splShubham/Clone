@@ -248,6 +248,7 @@ class DbHelper {
   }
 
 
+
   Future<CartModel> getCartProduct(int productId, int userId) async {
     var dbClient = await db;
     var res = await dbClient.rawQuery("SELECT * FROM $Table_Cart WHERE "

@@ -106,6 +106,11 @@ class _Product extends State<Product> {
                                             style: getTextStyle(
                                                 AppFonts.regularGrey,
                                                 AppSize.textSize14),
+                                          ),     Text(
+                                            item.productQuantity.toString(),
+                                            style: getTextStyle(
+                                                AppFonts.regularGrey,
+                                                AppSize.textSize14),
                                           ),
                                           SizedBox(
                                             width: 30,

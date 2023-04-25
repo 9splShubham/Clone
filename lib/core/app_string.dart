@@ -253,7 +253,7 @@ class AppString {
   static const text200320211015 = "20/03/2021 | 10:15";
   static const textOrderNo235321546 = "Order No: 235-321-546";
   static const textL60025 = "L600.25";
-  static const textQuantity = "Quantity : 1";
+  static const textQuantity = "Quantity : ";
   static const textEdit = "Edit";
   static const text180320211300 = "18/03/2021 | 13:00";
 
