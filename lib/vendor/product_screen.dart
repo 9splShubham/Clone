@@ -40,6 +40,7 @@ class _Product extends State<Product> {
     print('object--mProductModel---${mProductModel.length}');
     setState(() {});
   }
+
   removeFromProduct(int index) async {
     dbHelper = DbHelper();
     await dbHelper.deleteProduct(mProductModel[index].productId);
@@ -51,58 +52,55 @@ class _Product extends State<Product> {
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Expanded(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                height: 550,
-                child: ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: mProductModel.length,
-                    itemBuilder: (context, index) {
-                      ProductModel item = mProductModel[index];
-                      return RowProduct(
-                        item: mProductModel[index],
-
-                        onDelete: () => removeFromProduct(index),);
-
-                    }),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: ElevatedButton(
-                  onPressed: () {
-                    showModalBottomSheet(
-                        context: context,
-                        builder: (builder) {
-                          return BottomSheetProduct(
-                            onProductAdd: () {
-                              initData();
-                              Navigator.pop(context);
-                              alertDialog("Successfully Saved");
-                            },
-                          );
-                        });
-                  },
-                  child: Icon(
-                    Icons.add,
-                    color: AppColor.colorWhite,
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.all(10),
-                      backgroundColor: AppColor.colorPrimary),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 550,
+              child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: mProductModel.length,
+                  itemBuilder: (context, index) {
+                    ProductModel item = mProductModel[index];
+                    return RowProduct(
+                      item: mProductModel[index],
+                      onDelete: () => removeFromProduct(index),
+                    );
+                  }),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: ElevatedButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (builder) {
+                        return BottomSheetProduct(
+                          onProductAdd: () {
+                            initData();
+                            Navigator.pop(context);
+                            alertDialog("Successfully Saved");
+                          },
+                        );
+                      });
+                },
+                child: Icon(
+                  Icons.add,
+                  color: AppColor.colorWhite,
                 ),
-              )
-            ],
-          ),
+                style: ElevatedButton.styleFrom(
+                    shape: CircleBorder(),
+                    padding: EdgeInsets.all(10),
+                    backgroundColor: AppColor.colorPrimary),
+              ),
+            )
+          ],
         ),
       ),
     );
