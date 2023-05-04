@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:clone/core/app_color.dart';
 import 'package:clone/core/app_fonts.dart';
 import 'package:clone/core/app_image.dart';
@@ -7,6 +9,7 @@ import 'package:clone/dashboard/dashboard.dart';
 
 import 'package:clone/otp_verification/otp_verification.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class SetAddress extends StatefulWidget {
   const SetAddress({Key? key}) : super(key: key);
@@ -16,6 +19,45 @@ class SetAddress extends StatefulWidget {
 }
 
 class _SetAddressState extends State<SetAddress> {
+  late var _currentIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  final Completer<GoogleMapController> _controller =
+      Completer<GoogleMapController>();
+
+  static const CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(23.04514731288731, 72.51512427787496),
+    zoom: 17.4746,
+  );
+
+  static const CameraPosition _kLake = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(23.04514731288731, 72.51512427787496),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414);
+
+  Map<MarkerId, Marker> markers = <MarkerId, Marker>{
+    MarkerId('marker_id_1'): Marker(
+      markerId: MarkerId('marker_id_1'),
+      position: LatLng(23.04514731288731, 72.51512427787496),
+      infoWindow: InfoWindow(
+        title: 'My current location',
+      ),
+      onTap: () {
+        //_onMarkerTapped(markerId);
+        print('Marker Tapped');
+      },
+      onDragEnd: (LatLng position) {
+        print('Drag Ended');
+      },
+    )
+  };
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -57,12 +99,14 @@ class _SetAddressState extends State<SetAddress> {
           child: Column(
             children: [
               Container(
-                height: 280,
-                width: double.infinity,
-                child: Image.asset(
-                  AppImage.Map,
-                  height: double.infinity,
-                  fit: BoxFit.fill,
+                height: 400,
+                child: GoogleMap(
+                  mapType: MapType.hybrid,
+                  markers: Set<Marker>.of(markers.values),
+                  initialCameraPosition: _kGooglePlex,
+                  onMapCreated: (GoogleMapController controller) {
+                    _controller.complete(controller);
+                  },
                 ),
               ),
               Container(
@@ -72,36 +116,6 @@ class _SetAddressState extends State<SetAddress> {
                     children: [
                       SizedBox(
                         height: 20,
-                      ),
-                      Row(
-                        children: [
-                          Image.asset(
-                            AppImage.location,
-                            height: 20,
-                            width: 20,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                AppString.text841MontgomerySt,
-                                style: getTextStyle(AppFonts.mediumBoldBlack,
-                                    AppSize.textSize14),
-                              ),
-                              Text(
-                                AppString.textJerseyCityNJ07306USA,
-                                style: getTextStyle(
-                                    AppFonts.regularBlack, AppSize.textSize12),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10,
                       ),
                       SizedBox(
                         height: 50,
@@ -146,76 +160,32 @@ class _SetAddressState extends State<SetAddress> {
                       SizedBox(
                         height: 20,
                       ),
-                      Row(
-                        children: [
-                          Image.asset(
-                            AppImage.house,
-                            height: 20,
-                            width: 20,
+                      BottomNavigationBar(
+                        type: BottomNavigationBarType.fixed,
+                        selectedItemColor: AppColor.colorPrimary,
+                        unselectedItemColor:
+                            AppColor.colorBlack.withOpacity(.60),
+                        selectedFontSize: 14,
+                        unselectedFontSize: 14,
+                        currentIndex: _currentIndex,
+                        onTap: _onItemTapped,
+                        elevation: 0,
+                        items: const <BottomNavigationBarItem>[
+                          BottomNavigationBarItem(
+                            label: AppString.textHome,
+                            icon: Icon(Icons.home_outlined),
                           ),
-                          SizedBox(
-                            width: 10,
+                          BottomNavigationBarItem(
+                            label: AppString.textOffice,
+                            icon: Icon(Icons.apartment),
                           ),
-                          Text(
-                            AppString.textHome,
-                            style: getTextStyle(
-                              AppFonts.regularBlack,
-                              AppSize.textSize12,
-                            ),
+                          BottomNavigationBarItem(
+                            label: AppString.textFamily,
+                            icon: Icon(Icons.family_restroom_outlined),
                           ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          Image.asset(
-                            AppImage.building,
-                            height: 20,
-                            width: 20,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            AppString.textOffice,
-                            style: getTextStyle(
-                              AppFonts.regularBlack,
-                              AppSize.textSize12,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          Image.asset(
-                            AppImage.family,
-                            height: 20,
-                            width: 20,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            AppString.textFamily,
-                            style: getTextStyle(
-                              AppFonts.regularBlack,
-                              AppSize.textSize12,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          Image.asset(
-                            AppImage.location2,
-                            height: 20,
-                            width: 20,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            AppString.textOther,
-                            style: getTextStyle(
-                              AppFonts.regularBlack,
-                              AppSize.textSize12,
-                            ),
+                          BottomNavigationBarItem(
+                            label: AppString.textOther,
+                            icon: Icon(Icons.pin_drop_outlined),
                           ),
                         ],
                       ),

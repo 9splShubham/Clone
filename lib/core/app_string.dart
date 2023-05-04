@@ -62,10 +62,8 @@ class AppString {
   static const textOurInstagramFeed = "Our Instagram Feed";
   static const textFOLLOWUSON = "FOLLOW US ON";
   static const textNotification = "Notification";
-  static const textWineLiqour = "Wine/Liqour";
-  static const textVitamins = "Vitamins";
-  static const textHealth = "Health";
-  static const textSkinCare = "Skin Care";
+  static const textFoodgrains = "Foodgrains";
+  static const textDairy = "Dairy";
 
   //DRAWER
 

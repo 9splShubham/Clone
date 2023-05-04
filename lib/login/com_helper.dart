@@ -1,5 +1,7 @@
 import 'dart:ffi';
 
+import 'package:clone/core/app_fonts.dart';
+import 'package:clone/core/app_size.dart';
 import 'package:clone/login/navigator_key.dart';
 import 'package:clone/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -30,13 +32,19 @@ alertDialog(String msg) {
 showAlertDialog(BuildContext context, String msg) {
   // set up the button
   Widget okCancel = TextButton(
-    child: Text("Cancel"),
+    child: Text(
+      "Cancel",
+      style: getTextStyle(AppFonts.regularGreen, AppSize.mainSize14),
+    ),
     onPressed: () {
       Navigator.pop(context);
     },
   );
   Widget okButton = TextButton(
-    child: Text("OK"),
+    child: Text(
+      "OK",
+      style: getTextStyle(AppFonts.regularGreen, AppSize.mainSize14),
+    ),
     onPressed: () {
       // onLogout();
       Navigator.pop(context);

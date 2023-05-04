@@ -151,10 +151,7 @@ class _RegistrationState extends State<Registration> {
                   fit: BoxFit.fill,
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const login()),
-                  );
+                  Navigator.of(context).pop();
                 },
               ),
             ),

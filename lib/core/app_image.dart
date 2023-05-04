@@ -1,8 +1,8 @@
 class AppImage {
   static const String filePath = 'assets/images/';
   static const String appLogo = '${filePath}logo.png';
-  static const String appBackground = '${filePath}splashbackground.png';
-  static const String onboard = '${filePath}logo2.png';
+  static const String appBackground = '${filePath}SplashScreen.png';
+  static const String onboard = '${filePath}grocery_store.png';
   static const String fb = '${filePath}facebook.png';
   static const String back = '${filePath}back_button.png';
   static const String Map = '${filePath}Map.png';
@@ -16,6 +16,7 @@ class AppImage {
   static const String discount = '${filePath}discount.png';
   static const String search = '${filePath}search.png';
   static const String slider = '${filePath}slider.png';
+  static const String slider2 = '${filePath}slider 2.png';
   static const String category = '${filePath}category1.png';
   static const String doritos = '${filePath}doritos.png';
   static const String medicine = '${filePath}Medicine.png';

@@ -2,7 +2,7 @@
   "category": [
     {
       "id": 1,
-      "name": "Rice",
+      "name": "Foodgrains",
       "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwJdMPVvaSEqYP_fbMmfbg6p78vtkNARBmGAHim6s1skCEQSCg2LyCZku7TAeQ8u1m8BhyQzhqqpqHTehZfLZNCfAlWG9ekNQa5Rpx0YU8LUKkWNcFbzR7TzeXtXxIUxuW3G8-UFt6u6qxuWAHL0JF8Qee1phr5NMwG7D9fQsawzg3fHowfW3uGwGl1A/s320/Untitled%20design%20(5).png"
     },
     {
@@ -12,8 +12,8 @@
     },
     {
       "id": 3,
-      "name": "Baby Care",
-      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2jGqVdtpZ0G-Xz7sjJKzHd0C5gEigO3VfN8vThI6pXxXer_smRRvaTTxXEpCu4FWG6vpBQfESJTspC-M_muRwLfPhtJmr51NOx19Nr15Xxmf1TqhGRv8ZsbURqAF0YDtjK3BOWs9_z9k2hA4gaomMWSCOwoNyFaHdxbBcYwKldOhnmRYcw4Fd9YpxAg/s320/Untitled%20design%20(7).png"
+      "name": "Dairy",
+      "image": "https://blogger.googleusercontent.com/img/a/AVvXsEgXaid1JipVFhZAWyBYhwBu_blLTx2_OVIqrc87ZnlvXUsRsPV2QukMxE4Vc9E5XimnIds9uqPIKjcL0iqswhsrO764kY27WaBikVIAS8qsYcZG92V4t-G1BVccGql_XzKSYCwmy59Fp1EB9KAxoDoPFDadTCoqOaNVULz5LIaCMkXRZfVPz8lmBBl3Qg"
     },
     {
       "id": 4,

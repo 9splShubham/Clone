@@ -16,6 +16,7 @@ import 'package:clone/login/navigator_key.dart';
 
 import 'package:clone/otp_verification/otp_verification.dart';
 import 'package:clone/registration/registration.dart';
+import 'package:clone/set_address/setaddress.dart';
 import 'package:clone/vendor/vendor.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
@@ -106,7 +107,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             } else {
               Navigator.pushAndRemoveUntil(
                   NavigatorKey.navigatorKey.currentContext!,
-                  MaterialPageRoute(builder: (_) => const Dashboard()),
+                  MaterialPageRoute(builder: (_) => const SetAddress()),
                   (Route<dynamic> route) => false);
             }
           });

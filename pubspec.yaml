@@ -43,6 +43,11 @@ dependencies:
   shared_preferences: ^2.1.0
   sqflite: ^2.2.6
   path:
+  google_sign_in: ^6.1.0
+  googleapis_auth: ^1.4.0
+  googleapis: ^11.0.0
+  google_maps_flutter: ^2.2.6
+
 
 dev_dependencies:
   flutter_test:

@@ -4,7 +4,9 @@ import 'package:clone/core/app_image.dart';
 import 'package:clone/core/app_size.dart';
 import 'package:clone/core/app_string.dart';
 import 'package:clone/login/login.dart';
+import 'package:clone/registration/registration.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Onboard extends StatefulWidget {
   const Onboard({Key? key}) : super(key: key);
@@ -14,6 +16,17 @@ class Onboard extends StatefulWidget {
 }
 
 class _OnboardState extends State<Onboard> {
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  void _login() async {
+    try {
+      await _googleSignIn.signIn();
+      // User signed in successfully
+    } catch (error) {
+      print(error);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +48,10 @@ class _OnboardState extends State<Onboard> {
               style: ElevatedButton.styleFrom(
                 primary: AppColor.colorPrimary,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Registration()));
+              },
             ),
           ),
           const SizedBox(
@@ -105,7 +121,9 @@ class _OnboardState extends State<Onboard> {
                   height: 30,
                   width: 30,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  _login();
+                },
                 style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all(AppColor.colorWhite),

@@ -188,7 +188,6 @@ class _AllCategoryState extends State<AllCategory> {
   }
 }
 
-
 class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key}) : super(key: key);
 
@@ -217,7 +216,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       width: 40,
                     ),
                     Text(
-                      AppString.textWineLiqour,
+                      AppString.textFoodgrains,
                       style: getTextStyle(
                           AppFonts.mediumBoldBlack2, AppSize.textSize16),
                     ),
@@ -246,7 +245,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       width: 40,
                     ),
                     Text(
-                      AppString.textVitamins,
+                      AppString.textBeverages,
                       style: getTextStyle(
                           AppFonts.mediumBoldBlack2, AppSize.textSize16),
                     ),
@@ -275,7 +274,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       width: 40,
                     ),
                     Text(
-                      AppString.textHealth,
+                      AppString.textDairy,
                       style: getTextStyle(
                           AppFonts.mediumBoldBlack2, AppSize.textSize16),
                     ),
@@ -304,7 +303,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       width: 40,
                     ),
                     Text(
-                      AppString.textSkinCare,
+                      AppString.textCookies,
                       style: getTextStyle(
                           AppFonts.mediumBoldBlack2, AppSize.textSize16),
                     ),

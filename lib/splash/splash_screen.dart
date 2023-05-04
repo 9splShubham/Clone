@@ -54,12 +54,6 @@ class _SplashState extends State<Splash> {
           fit: BoxFit.cover,
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 140),
-        child: Image.asset(
-          AppImage.appLogo,
-        ),
-      ),
     ));
   }
 }

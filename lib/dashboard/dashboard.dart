@@ -48,13 +48,6 @@ final List<String> Titles = [
   "Doritos Tangy Cheese Corn Chips",
 ];
 
-final List<String> imageTitles = [
-  AppString.textWineLiqour,
-  AppString.textVitamins,
-  AppString.textHealth,
-  AppString.textSkinCare,
-];
-
 class _DashboardState extends State<Dashboard> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
   int selectedIndex = 0;
@@ -236,7 +229,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   onTap: () {
                     // alertDialog("Are you sure you want to logout?");
-                    onLogout();
+                    showAlertDialog(context);
                   },
                 ),
               ],
@@ -327,6 +320,52 @@ class _DashboardState extends State<Dashboard> {
           )),
     );
   }
+
+  showAlertDialog(BuildContext context) {
+    // set up the buttons
+    Widget cancelButton = InkWell(
+      child: Padding(
+        padding: const EdgeInsets.all(7),
+        child: Text(
+          "Cancel",
+          style: getTextStyle(AppFonts.regularGreen, AppSize.textSize16),
+        ),
+      ),
+      onTap: () {
+        Navigator.of(context, rootNavigator: true).pop();
+      },
+    );
+    Widget deleteButton = InkWell(
+      child: Padding(
+        padding: const EdgeInsets.all(7),
+        child: Text("Ok",
+            style: getTextStyle(AppFonts.regularGreen, AppSize.textSize16)),
+      ),
+      onTap: () {
+        Navigator.of(context, rootNavigator: true).pop();
+        onLogout();
+      },
+    );
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Alert"),
+      content: Padding(
+        padding: const EdgeInsets.only(bottom: 20),
+        child: Text("Are you sure You want to Logout?"),
+      ),
+      actions: [
+        cancelButton,
+        deleteButton,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
 }
 
 class _dashboard extends StatefulWidget {
@@ -339,6 +378,11 @@ class _dashboard extends StatefulWidget {
 }
 
 class _dashboardState extends State<_dashboard> {
+  List<String> images = [
+    AppImage.slider,
+    AppImage.slider2,
+    AppImage.slider,
+  ];
   Future<SharedPreferences> _pref = SharedPreferences.getInstance();
 
   late DbHelper dbHelper;
@@ -418,22 +462,20 @@ class _dashboardState extends State<_dashboard> {
               height: 160,
               color: Colors.white,
               width: double.infinity,
-              child: CarouselSlider(
-                options: CarouselOptions(height: 160),
-                items: [1, 2, 3, 4, 5].map((i) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                          decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15))),
-                          child: Image.asset(AppImage.slider));
-                    },
-                  );
-                }).toList(),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: images.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: EdgeInsets.symmetric(horizontal: 10.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                      ),
+                      child: Image.asset(
+                        images[index],
+                      ));
+                },
               ),
             ),
             const SizedBox(
