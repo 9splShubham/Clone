@@ -29,7 +29,6 @@ class Details {
   }
 }
 
-
 List<Details> details() {
   List<Details> mList = [];
 
@@ -38,24 +37,23 @@ List<Details> details() {
   mDetails.orderNo = AppString.textorderNo123321123;
   mDetails.rs = AppString.text$5025;
   mDetails.email = AppString.textjohndoemailcom;
-  mDetails.dateTime = AppString.text200320211015  ;
-  mDetails.image = AppImage.doritos;
-  mDetails.image = AppImage.Hamper;
-  mDetails.image = AppImage.Shampoo;
+  mDetails.dateTime = AppString.text200320211015;
+  mDetails.image = AppImage.AmulButter;
+  mDetails.image = AppImage.AshirwadAtta;
+  mDetails.image = AppImage.UnibicCookies;
   mList.add(mDetails);
 
   mDetails = Details();
   mDetails.orderNo = AppString.textOrderNo235321546;
   mDetails.rs = AppString.textL60025;
-  mDetails.email =  AppString.textjohndoemailcom;
-  mDetails.dateTime = AppString.text200320211015 ;
-  mDetails.image = AppImage.Serum;
-  mDetails.image = AppImage.medicine;
-  mDetails.image = AppImage.Hamper;
-  mDetails.image = AppImage.Shampoo;
+  mDetails.email = AppString.textjohndoemailcom;
+  mDetails.dateTime = AppString.text200320211015;
+  mDetails.image = AppImage.redbull;
+  mDetails.image = AppImage.UnibicCookies;
+  mDetails.image = AppImage.AshirwadAtta;
+  mDetails.image = AppImage.AmulButter;
 
   mList.add(mDetails);
-
 
   return mList;
 }

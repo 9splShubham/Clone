@@ -74,29 +74,28 @@ List<PopularProducts> items() {
 
   PopularProducts mCategory = PopularProducts();
 
-  mCategory.image = AppImage.doritos;
-  mCategory.name = AppString.textDoritostext;
+  mCategory.image = AppImage.redbull;
+  mCategory.name = AppString.textRedBull;
   mCategory.price = AppString.textRS;
   mList.add(mCategory);
 
   mCategory = PopularProducts();
-  mCategory.image = AppImage.Hamper;
-  mCategory.name = AppString.textAveenoBaby;
+  mCategory.image = AppImage.UnibicCookies;
+  mCategory.name = AppString.textUnibicCookies;
   mCategory.price = AppString.textRS2;
   mList.add(mCategory);
 
   mCategory = PopularProducts();
-  mCategory.image = AppImage.Serum;
-  mCategory.name = AppString.textTheOrdinaryHyaluronicAcid;
+  mCategory.image = AppImage.AshirwadAtta;
+  mCategory.name = AppString.textAshirwadAtta;
   mCategory.price = AppString.textRS3;
   mList.add(mCategory);
 
   mCategory = PopularProducts();
-  mCategory.image = AppImage.Shampoo;
-  mCategory.name = AppString.textHeadandShouldersShampoo;
+  mCategory.image = AppImage.AmulButter;
+  mCategory.name = AppString.textAmulButter;
   mCategory.price = AppString.textRS4;
   mList.add(mCategory);
-
   return mList;
 }
 
@@ -127,50 +126,50 @@ List<PopularProducts1> items2() {
 
   PopularProducts1 mCategory = PopularProducts1();
 
-  mCategory.image = AppImage.doritos;
-  mCategory.name = AppString.textDoritostext;
+  mCategory.image = AppImage.redbull;
+  mCategory.name = AppString.textRedBull;
   mCategory.price = AppString.textRS;
   mList.add(mCategory);
 
   mCategory = PopularProducts1();
-  mCategory.image = AppImage.Hamper;
-  mCategory.name = AppString.textAveenoBaby;
+  mCategory.image = AppImage.UnibicCookies;
+  mCategory.name = AppString.textUnibicCookies;
   mCategory.price = AppString.textRS2;
   mList.add(mCategory);
 
   mCategory = PopularProducts1();
-  mCategory.image = AppImage.Serum;
-  mCategory.name = AppString.textTheOrdinaryHyaluronicAcid;
+  mCategory.image = AppImage.AshirwadAtta;
+  mCategory.name = AppString.textAshirwadAtta;
   mCategory.price = AppString.textRS3;
   mList.add(mCategory);
 
   mCategory = PopularProducts1();
-  mCategory.image = AppImage.Shampoo;
-  mCategory.name = AppString.textHeadandShouldersShampoo;
+  mCategory.image = AppImage.AmulButter;
+  mCategory.name = AppString.textAmulButter;
   mCategory.price = AppString.textRS4;
   mList.add(mCategory);
 
   mCategory = PopularProducts1();
-  mCategory.image = AppImage.doritos;
-  mCategory.name = AppString.textDoritostext;
+  mCategory.image = AppImage.redbull;
+  mCategory.name = AppString.textRedBull;
   mCategory.price = AppString.textRS;
   mList.add(mCategory);
 
   mCategory = PopularProducts1();
-  mCategory.image = AppImage.Hamper;
-  mCategory.name = AppString.textAveenoBaby;
+  mCategory.image = AppImage.UnibicCookies;
+  mCategory.name = AppString.textUnibicCookies;
   mCategory.price = AppString.textRS2;
   mList.add(mCategory);
 
   mCategory = PopularProducts1();
-  mCategory.image = AppImage.Serum;
-  mCategory.name = AppString.textTheOrdinaryHyaluronicAcid;
+  mCategory.image = AppImage.AshirwadAtta;
+  mCategory.name = AppString.textAshirwadAtta;
   mCategory.price = AppString.textRS3;
   mList.add(mCategory);
 
   mCategory = PopularProducts1();
-  mCategory.image = AppImage.Shampoo;
-  mCategory.name = AppString.textHeadandShouldersShampoo;
+  mCategory.image = AppImage.AmulButter;
+  mCategory.name = AppString.textAmulButter;
   mCategory.price = AppString.textRS4;
   mList.add(mCategory);
 
@@ -199,60 +198,60 @@ class Search {
   }
 }
 
-List<Search> Search1() {
+/*List<Search> Search1() {
   List<Search> mList = [];
 
   Search mCategory = Search();
 
-  mCategory.image = AppImage.doritos;
-  mCategory.name = AppString.textDoritostext;
+  mCategory.image = AppImage.redbull;
+  mCategory.name = AppString.textRedBull;
   mCategory.price = AppString.textRS;
   mList.add(mCategory);
 
   mCategory = Search();
-  mCategory.image = AppImage.Hamper;
-  mCategory.name = AppString.textAveenoBaby;
+  mCategory.image = AppImage.UnibicCookies;
+  mCategory.name = AppString.textUnibicCookies;
   mCategory.price = AppString.textRS2;
   mList.add(mCategory);
 
   mCategory = Search();
-  mCategory.image = AppImage.Serum;
-  mCategory.name = AppString.textTheOrdinaryHyaluronicAcid;
+  mCategory.image = AppImage.AshirwadAtta;
+  mCategory.name = AppString.textAshirwadAtta;
   mCategory.price = AppString.textRS3;
   mList.add(mCategory);
 
   mCategory = Search();
-  mCategory.image = AppImage.Shampoo;
-  mCategory.name = AppString.textHeadandShouldersShampoo;
+  mCategory.image = AppImage.AmulButter;
+  mCategory.name = AppString.textAmulButter;
   mCategory.price = AppString.textRS4;
   mList.add(mCategory);
 
   mCategory = Search();
-  mCategory.image = AppImage.doritos;
-  mCategory.name = AppString.textDoritostext;
+  mCategory.image = AppImage.redbull;
+  mCategory.name = AppString.textRedBull;
   mCategory.price = AppString.textRS;
   mList.add(mCategory);
 
   mCategory = Search();
-  mCategory.image = AppImage.Hamper;
-  mCategory.name = AppString.textAveenoBaby;
+  mCategory.image = AppImage.UnibicCookies;
+  mCategory.name = AppString.textUnibicCookies;
   mCategory.price = AppString.textRS2;
   mList.add(mCategory);
 
   mCategory = Search();
-  mCategory.image = AppImage.Serum;
-  mCategory.name = AppString.textTheOrdinaryHyaluronicAcid;
+  mCategory.image = AppImage.AshirwadAtta;
+  mCategory.name = AppString.textAshirwadAtta;
   mCategory.price = AppString.textRS3;
   mList.add(mCategory);
 
   mCategory = Search();
-  mCategory.image = AppImage.Shampoo;
-  mCategory.name = AppString.textHeadandShouldersShampoo;
+  mCategory.image = AppImage.AmulButter;
+  mCategory.name = AppString.textAmulButter;
   mCategory.price = AppString.textRS4;
   mList.add(mCategory);
 
   return mList;
-}
+}*/
 
 class RecommendProducts1 {
   String? image;
@@ -281,53 +280,52 @@ List<RecommendProducts1> Products() {
 
   RecommendProducts1 mCategory = RecommendProducts1();
 
-  mCategory.image = AppImage.medicine;
-  mCategory.name = AppString.textTrueBasicsMultivitSport;
-  mCategory.price = AppString.textRS5;
-  mList.add(mCategory);
-
-  mCategory = RecommendProducts1();
-  mCategory.image = AppImage.ponds;
-  mCategory.name = AppString.textdPondVitaminMicellar;
-  mCategory.price = AppString.textRS6;
-  mList.add(mCategory);
-
-  mCategory = RecommendProducts1();
-  mCategory.image = AppImage.formula;
-  mCategory.name = AppString.textFormulaMaskCollection;
-  mCategory.price = AppString.textRS7;
-  mList.add(mCategory);
-
-  mCategory = RecommendProducts1();
-  mCategory.image = AppImage.pampers;
-  mCategory.name = AppString.textBabyDiapersNewborn;
+  mCategory.image = AppImage.redbull;
+  mCategory.name = AppString.textRedBull;
   mCategory.price = AppString.textRS8;
   mList.add(mCategory);
 
   mCategory = RecommendProducts1();
-  mCategory.image = AppImage.medicine;
-  mCategory.name = AppString.textTrueBasicsMultivitSport;
+  mCategory.image = AppImage.UnibicCookies;
+  mCategory.name = AppString.textUnibicCookies;
+  mCategory.price = AppString.textRS3;
+  mList.add(mCategory);
+
+  mCategory = RecommendProducts1();
+  mCategory.image = AppImage.AshirwadAtta;
+  mCategory.name = AppString.textAshirwadAtta;
   mCategory.price = AppString.textRS5;
   mList.add(mCategory);
 
   mCategory = RecommendProducts1();
-  mCategory.image = AppImage.ponds;
-  mCategory.name = AppString.textdPondVitaminMicellar;
-  mCategory.price = AppString.textRS6;
-  mList.add(mCategory);
-
-  mCategory = RecommendProducts1();
-  mCategory.image = AppImage.formula;
-  mCategory.name = AppString.textFormulaMaskCollection;
+  mCategory.image = AppImage.AmulButter;
+  mCategory.name = AppString.textAmulButter;
   mCategory.price = AppString.textRS7;
   mList.add(mCategory);
 
   mCategory = RecommendProducts1();
-  mCategory.image = AppImage.pampers;
-  mCategory.name = AppString.textBabyDiapersNewborn;
-  mCategory.price = AppString.textRS8;
+  mCategory.image = AppImage.cheesespread;
+  mCategory.name = AppString.textCheeseSpread;
+  mCategory.price = AppString.textRS2;
   mList.add(mCategory);
 
+  mCategory = RecommendProducts1();
+  mCategory.image = AppImage.AppyFizz;
+  mCategory.name = AppString.textAppyFizz;
+  mCategory.price = AppString.textRS3;
+  mList.add(mCategory);
+
+  mCategory = RecommendProducts1();
+  mCategory.image = AppImage.Atta;
+  mCategory.name = AppString.textAmulAtta;
+  mCategory.price = AppString.textRS4;
+  mList.add(mCategory);
+
+  mCategory = RecommendProducts1();
+  mCategory.image = AppImage.AmulButter;
+  mCategory.name = AppString.textBritania;
+  mCategory.price = AppString.textRS5;
+  mList.add(mCategory);
   return mList;
 }
 
@@ -358,27 +356,27 @@ List<RecommendProducts> RecommendProduct() {
 
   RecommendProducts mCategory = RecommendProducts();
 
-  mCategory.image = AppImage.medicine;
-  mCategory.name = AppString.textTrueBasicsMultivitSport;
+  mCategory.image = AppImage.cheesespread;
+  mCategory.name = AppString.textCheeseSpread;
+  mCategory.price = AppString.textRS2;
+  mList.add(mCategory);
+
+  mCategory = RecommendProducts();
+  mCategory.image = AppImage.AppyFizz;
+  mCategory.name = AppString.textAppyFizz;
+  mCategory.price = AppString.textRS3;
+  mList.add(mCategory);
+
+  mCategory = RecommendProducts();
+  mCategory.image = AppImage.Atta;
+  mCategory.name = AppString.textAmulAtta;
+  mCategory.price = AppString.textRS4;
+  mList.add(mCategory);
+
+  mCategory = RecommendProducts();
+  mCategory.image = AppImage.AmulButter;
+  mCategory.name = AppString.textBritania;
   mCategory.price = AppString.textRS5;
-  mList.add(mCategory);
-
-  mCategory = RecommendProducts();
-  mCategory.image = AppImage.ponds;
-  mCategory.name = AppString.textdPondVitaminMicellar;
-  mCategory.price = AppString.textRS6;
-  mList.add(mCategory);
-
-  mCategory = RecommendProducts();
-  mCategory.image = AppImage.formula;
-  mCategory.name = AppString.textFormulaMaskCollection;
-  mCategory.price = AppString.textRS7;
-  mList.add(mCategory);
-
-  mCategory = RecommendProducts();
-  mCategory.image = AppImage.pampers;
-  mCategory.name = AppString.textBabyDiapersNewborn;
-  mCategory.price = AppString.textRS8;
   mList.add(mCategory);
 
   return mList;
@@ -406,7 +404,7 @@ class Product2 {
   }
 }
 
-List<Product2> Products2() {
+/*List<Product2> Products2() {
   List<Product2> mList = [];
 
   Product2 mCategory = Product2();
@@ -466,4 +464,4 @@ List<Product2> Products2() {
   mList.add(mCategory);
 
   return mList;
-}
+}*/

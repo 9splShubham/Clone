@@ -707,7 +707,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                           Row(
                                             children: [
                                               Image.asset(
-                                                AppImage.doritos,
+                                                AppImage.AmulButter,
                                                 height: 50,
                                                 width: 50,
                                               ),
@@ -721,7 +721,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                                           .stretch,
                                                   children: [
                                                     Text(
-                                                      AppString.textDoritostext,
+                                                      AppString.textAmulButter,
                                                       style: getTextStyle(
                                                           AppFonts
                                                               .regularBlack2,
@@ -765,7 +765,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                           Row(
                                             children: [
                                               Image.asset(
-                                                AppImage.Hamper,
+                                                AppImage.redbull,
                                                 height: 50,
                                                 width: 50,
                                               ),
@@ -777,7 +777,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    AppString.textAveenoBaby,
+                                                    AppString.textRedBull,
                                                     style: getTextStyle(
                                                         AppFonts.regularBlack2,
                                                         AppSize.textSize14),
@@ -817,7 +817,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                           Row(
                                             children: [
                                               Image.asset(
-                                                AppImage.hh,
+                                                AppImage.UnibicCookies,
                                                 height: 50,
                                                 width: 50,
                                               ),
@@ -829,8 +829,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    AppString
-                                                        .textHeadandShouldersShampoo,
+                                                    AppString.textUnibicCookies,
                                                     style: getTextStyle(
                                                         AppFonts.regularBlack2,
                                                         AppSize.textSize14),

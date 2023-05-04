@@ -437,13 +437,7 @@ class _dashboardState extends State<_dashboard> {
                             width: 20,
                             height: 20,
                           ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SearchScreen()),
-                            );
-                          },
+                          onTap: () {},
                         ),
                       ),
                       border: InputBorder.none,
@@ -782,7 +776,7 @@ class _dashboardState extends State<_dashboard> {
                                         ),
                                       ),
                                       Text(
-                                        AppString.textNWS,
+                                        AppString.textNWS2,
                                         style: getTextStyle(
                                             AppFonts.regularBlack,
                                             AppSize.textSize14),

@@ -61,6 +61,7 @@ class ModelCartProduct {
     return data;
   }
 }
+
 ///Shubham
 class Category {
   String? image;
@@ -85,30 +86,6 @@ class Category {
   }
 }
 
-List<Category> cart() {
-  List<Category> mList = [];
-
-  Category mCategory = Category();
-
-  mCategory.image = AppImage.doritos;
-  mCategory.name = AppString.textDoritostext;
-  mCategory.price = AppString.textRS;
-  mList.add(mCategory);
-
-  mCategory = Category();
-  mCategory.image = AppImage.Hamper;
-  mCategory.name = AppString.textAveenoBaby;
-  mCategory.price = AppString.textRS2;
-  mList.add(mCategory);
-
-  mCategory = Category();
-  mCategory.image = AppImage.Shampoo;
-  mCategory.name = AppString.textHeadandShouldersShampoo;
-  mCategory.price = AppString.textRS4;
-  mList.add(mCategory);
-
-  return mList;
-}
 class OrderModel {
   int? orderID;
   int? orderQty;
@@ -118,10 +95,10 @@ class OrderModel {
 
   OrderModel(
       {this.orderID,
-        this.orderQty,
-        this.orderProductId,
-        this.orderUserId,
-        this.orderStatus});
+      this.orderQty,
+      this.orderProductId,
+      this.orderUserId,
+      this.orderStatus});
 
   OrderModel.fromJson(Map<String, dynamic> json) {
     orderID = json['orderID'];

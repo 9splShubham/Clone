@@ -84,13 +84,18 @@ class AppString {
   static const textAddProduct = "Add Products";
 
 // Popular products
-  static const textDoritostext = 'Doritos Tangy Cheese Corn Chips';
+  static const textRedBull = 'RedBull';
+  static const textCheeseSpread = 'CheeseSpread';
   static const textRS = "\$2.25";
-  static const textAveenoBaby = 'Aveeno Baby';
+  static const textUnibicCookies = 'UnibicCookies';
+  static const textAppyFizz = 'AppyFizz';
   static const textRS2 = "\$17.96";
-  static const textTheOrdinaryHyaluronicAcid = 'The Ordinary Hyaluronic Acid ';
+  static const textAshirwadAtta = 'AshirwadAtta';
+  static const textAmulAtta = 'Amul Atta';
+
   static const textRS3 = "\$22.89";
-  static const textHeadandShouldersShampoo = "Head and Shoulders Shampoo";
+  static const textAmulButter = "AmulButter";
+  static const textBritania = "Britania";
   static const textRS4 = "\$16.00";
 
   // NOTIFICATIONS
@@ -188,8 +193,10 @@ class AppString {
   static const textOrderSuccessfullyPlaced = "Order Successfully Placed";
   static const text1hoursago = "1 hours ago";
   static const textViewMyOrder = "View My Order";
+  static const textNWS2 =
+      "The online grocery service offers products to customers and proces...";
   static const textNWS =
-      "Lorem Ipsum is simply dummy text of the printing and typesetting in…";
+      "E-commerce is the biggest online evolution to connect with their  ...";
 
   // PAYMENT
 

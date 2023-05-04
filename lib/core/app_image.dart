@@ -18,7 +18,8 @@ class AppImage {
   static const String slider = '${filePath}slider.png';
   static const String slider2 = '${filePath}slider 2.png';
   static const String category = '${filePath}category1.png';
-  static const String doritos = '${filePath}doritos.png';
+  static const String redbull = '${filePath}redbull.jpeg';
+  static const String cheesespread = '${filePath}CheeseSpread.jpeg';
   static const String medicine = '${filePath}Medicine.png';
   static const String im = '${filePath}im.png';
   static const String fb2 = '${filePath}fb2.png';
@@ -50,9 +51,13 @@ class AppImage {
   static const String c4 = '${filePath}category4.png';
 
   // RECOMMEND PRODUCT
-  static const String Hamper = '${filePath}hamper.png';
-  static const String Shampoo = '${filePath}shampoo.png';
-  static const String Serum = '${filePath}serum.png';
+  static const String UnibicCookies = '${filePath}Unibic.jpeg';
+  static const String AppyFizz = '${filePath}AppyFizz.jpg';
+  static const String AmulButter = '${filePath}AmulButter.jpg';
+  static const String Britania = '${filePath}Britania.jpg';
+  static const String CheeseSpread = '${filePath}CheeseSpread.jpeg';
+  static const String Atta = '${filePath}AshirwadAtta.png';
+  static const String AshirwadAtta = '${filePath}AshirwadAtta.jpg';
 
   static const String tab = '${filePath}3.png';
   static const String back2 = '${filePath}back2.png';
@@ -80,7 +85,7 @@ class AppImage {
   static const String plus_circle = '${filePath}plus_circle.png';
   static const String cancel = '${filePath}cancel.png';
   static const String google = '${filePath}google.png';
-  static const String NWS = '${filePath}NWS.png';
+  static const String NWS = '${filePath}NWSz.png';
   static const String ficohsa_logo = '${filePath}ficohsa_logo.png';
   static const String order_placed = '${filePath}order_placed.png';
   static const String o1 = '${filePath}o1.png';
