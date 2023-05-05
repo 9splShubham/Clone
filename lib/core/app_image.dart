@@ -85,7 +85,7 @@ class AppImage {
   static const String plus_circle = '${filePath}plus_circle.png';
   static const String cancel = '${filePath}cancel.png';
   static const String google = '${filePath}google.png';
-  static const String NWS = '${filePath}NWSz.png';
+  static const String NWS = '${filePath}NWS.png';
   static const String ficohsa_logo = '${filePath}ficohsa_logo.png';
   static const String order_placed = '${filePath}order_placed.png';
   static const String o1 = '${filePath}o1.png';
